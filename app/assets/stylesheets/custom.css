@@ -1,0 +1,22 @@
+.navbar {
+  background-color: beige;
+}
+
+.expand {
+  width:100%;
+  height: 100px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+
+}
+
+.nav-item {
+width: 120px;
+word-wrap: normal;
+height: 100px;
+text-align: center;
+padding: 40px 0;
+}
