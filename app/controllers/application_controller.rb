@@ -12,16 +12,16 @@ class ApplicationController < ActionController::Base
     if @current_user
         @current_user
     else
-      OpenStruct.new(name: 'Visitante')
+      OpenStruct.new(username: 'Visitante')
     end
   end
   helper_method :current_user
 
-  def authorize
-    if current_user.nil?
-      flash[:danger] = "Faça login para continuar."
-      redirect_to login_url
-    end
-  end
+  # def authorize
+  #   if current_user.nil?
+  #     flash[:danger] = "Faça login para continuar."
+  #     redirect_to login_url
+  #   end
+  # end
 
 end
