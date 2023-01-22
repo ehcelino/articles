@@ -1,3 +1,22 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.outer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inner-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.inner-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .navigation {
   background-color: #333;
   overflow: hidden;
