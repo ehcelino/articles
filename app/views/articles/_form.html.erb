@@ -1,0 +1,30 @@
+<div class="central">
+  <div>
+    <div class="article-top">
+      <h3>Artigo</h3>
+    </div>
+    <div class="form">
+      <%= form_with model: article do |f| %>
+        <div class="field">
+          <div class="label">
+            <%= f.label "Título" %><br />
+          </div>
+          <%= f.text_field :title %>
+        </div>
+        <div class="field">
+          <div class="label">
+            <%= f.label "Categoria" %><br />
+          </div>
+          <%= f.collection_select :category_id, Category.all, :id, :category, {}, { class:"btn" } %>
+        </div>
+        <div class="field">
+          <div class="label">
+            <%= f.label "Corpo" %><br />
+          </div>
+          <%= f.rich_text_area :content %>
+        </div>
+        <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

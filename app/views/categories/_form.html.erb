@@ -1,0 +1,16 @@
+<div class="central">
+  <div>
+    <h3>Categoria</h3>
+    <div class="form">
+      <%= form_with model: category do |f| %>
+        <div class="field">
+          <div class="label">
+            <%= f.label "Título" %><br />
+          </div>
+          <%= f.text_field :name %>
+        </div>
+        <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
