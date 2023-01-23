@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password validations: false
   # attr_accessor :username, :email, :password, :password_confirmation
   has_many :articles
+  has_many :comments
 
   validates_uniqueness_of :username
   validates :username, presence: {message: "não pode estar em branco."}, length: { in: 4..14, message: 'tem que ter entre 4 a 14 caracteres.' }, uniqueness: {message: 'já em uso.'}
