@@ -1,0 +1,5 @@
+<div class="alert-out">
+  <% flash.each do |key, value| %>
+    <div id="notice" class="margins alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+</div>

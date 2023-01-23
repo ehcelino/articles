@@ -1,3 +1,9 @@
+:root {
+  --btn-face: #1e90ff;
+  --btn-border: #007ffd;
+  --btn-text: #ffffff;
+}
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -20,6 +26,61 @@ body {
 .navigation {
   background-color: #333;
   overflow: hidden;
+}
+
+.label {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.actions {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.alert-out {
+  display:flex;
+  justify-content: center;
+}
+
+.alert {
+  position:absolute;
+  top: 20px;
+  border-radius: 5px;
+  color: black;
+  padding: 10px;
+  margin: 5px;
+}
+
+.alert-danger {
+  border: 1px solid red;
+  background-color: rgb(236, 130, 130);
+  padding: 10px;
+}
+
+.alert-success {
+  border: 1px solid blue;
+  background-color: rgb(166, 166, 255);
+}
+
+#notice {
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.central {
+  display:flex;
+  justify-content: center;
+}
+
+.btn {
+  background-color: var(--btn-face);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+  border-radius: 4px;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* Style the links inside the navigation bar */

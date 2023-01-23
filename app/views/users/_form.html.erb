@@ -1,9 +1,9 @@
-<h1>Sign Up</h1>
+<h3>Inscrição</h3>
 
 <%= form_for user do |f| %>
   <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
+    <div id="notice" class="error_messages alert-danger">
+      <h3>Atenção:</h3>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,21 +13,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Nome de usuário" %><br />
+    <div class="label">
+      <%= f.label "Nome de usuário" %><br />
+    </div>
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label "Email" %><br />
+    <div class="label">
+      <%= f.label "Email" %><br />
+    </div>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <div class="label">
+      <%= f.label "Senha" %><br />
+    </div>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <div class="label">
+      <%= f.label "Repita a senha" %><br />
+    </div>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit "Sign Up" %></div>
+  <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
 <% end %>
 

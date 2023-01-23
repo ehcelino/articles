@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_create { generate_token(:auth_token) }
   has_secure_password validations: false
-  attr_accessor :username, :email, :password, :password_confirmation
+  # attr_accessor :username, :email, :password, :password_confirmation
   has_many :articles
 
   validates_uniqueness_of :username
