@@ -83,6 +83,18 @@ body {
   cursor: pointer;
 }
 
+.article-view {
+  margin: 25px 0 25px 0;
+}
+
+.container {
+  margin: 0 3% 0 3%;
+}
+
+.hide-nav {
+  display: inline;
+}
+
 /* Style the links inside the navigation bar */
 .navigation a {
   float: left;
@@ -111,7 +123,7 @@ body {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .navigation a:not(:first-child) {display: none;}
   .navigation a.icon {
     float: right;
@@ -119,7 +131,7 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .navigation.responsive {position: relative;}
   .navigation.responsive a.icon {
     position: absolute;
@@ -130,6 +142,23 @@ body {
     float: none;
     display: block;
     text-align: left;
+  }
+  .outer {
+    display:inline;
+  }
+  .inner-right {
+    display:inline;
+    justify-content: flex-start;
+  }
+  .inner-left {
+    display:inline;
+    justify-content: flex-start;
+  }
+  .hide-nav {
+    display: none;
+  }
+  .hide-nav.responsive {
+    display: inline;
   }
 }
 

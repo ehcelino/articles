@@ -2,3 +2,18 @@
   <%= render partial: "alert" %>
   <div class="article-header">
     <h3>Artigos</h3>
+  </div>
+  <div class="articles">
+    <% @articles.each do |article| %>
+      <div class="article-view">
+        <%= article.title %>
+        <br />
+        <%= truncate_article(article, 300) %>
+        <br />
+        Por <i><%= article.user.fullname %></i>
+        <br />
+        <%= link_to "Ver artigo", article_path(article) %>
+      </div>
+    <% end %>
+  </div>
+</div>

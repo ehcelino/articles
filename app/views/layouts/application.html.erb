@@ -14,8 +14,11 @@
 
   <body>
     <div class="navigation" id="navTop">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
       <div class="outer">
-        <div class="container inner-left">
+        <div class="inner-left">
           <div class="nav-items">
             <a href="<%= url_for(root_path) %>" class="active">Início</a>
             <a href="#news">Artigos</a>
@@ -23,15 +26,13 @@
             <a href="#about">Sobre</a>
           </div>
         </div>
-        <div class="container inner-right">
-          <div class="nav-items">
+        <div class="inner-right" id="rightDiv">
+          <div class="hide-nav" id="hideNav">
             <%= user_links %>
           </div>
         </div>
       </div>  
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
+      
     </div>
     <%= yield %>
 
@@ -47,12 +48,17 @@
 
   function myFunction() {
     var x = document.getElementById("navTop");
+    var h = document.getElementById("hideNav");
     if (x.className === "navigation") {
       x.className += " responsive";
+      h.className +=" responsive";
     } else {
       x.className = "navigation";
+      h.className = "hide-nav";
     }
   } 
+
+  
 </script>
 
   </body>

@@ -15,7 +15,7 @@
           <div class="label">
             <%= f.label "Categoria" %><br />
           </div>
-          <%= f.collection_select :category_id, Category.all, :id, :category, {}, { class:"btn" } %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, {}, { class:"btn" } %>
         </div>
         <div class="field">
           <div class="label">
@@ -23,6 +23,7 @@
           </div>
           <%= f.rich_text_area :content %>
         </div>
+        <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
       <% end %>
     </div>
