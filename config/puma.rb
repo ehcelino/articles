@@ -32,6 +32,10 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
+# PRA FUNCIONAR NA REDE INTERNA
+bind "tcp://192.168.0.111:3000" if ENV.fetch("RUNNING_ENV") == "home"
+
+
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
 # before forking the application. This takes advantage of Copy On Write

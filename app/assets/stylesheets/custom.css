@@ -6,6 +6,7 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small;
 }
 
 .outer {
@@ -87,12 +88,38 @@ body {
   margin: 25px 0 25px 0;
 }
 
+.article-user {
+  font-size:x-small;
+}
+
+.article-body {
+  color:rgb(107, 107, 107);
+  margin-bottom: 5px;
+}
+
 .container {
   margin: 0 3% 0 3%;
 }
 
 .hide-nav {
   display: inline;
+}
+
+.lnk {
+  color: black;
+}
+
+.article-title {
+  font-family: Garamond, Times, serif;
+  font-size:x-large;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.article-author {
+  margin-bottom: 10px;
+  font-size:small;
 }
 
 /* Style the links inside the navigation bar */

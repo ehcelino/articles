@@ -1,16 +1,19 @@
 <div class="container">
   <%= render partial: "alert" %>
-  <div class="central">
+  <div>
     <div class="content">
       <div class="article-title">
-        <h3><%= @article.title %></h3>
+        <h2><%= @article.title %></h2>
       </div>
       <div class="article-author">
-        <h4><%= @article.user.username %></h4>
+        <%= @article.created_at.strftime("%d/%m/%Y") %> - 
+        Por <i><%= @article.user.fullname %></i> - <i><%= @article.user.email %></i>
       </div>
-      <div class="article-body">
+      <div class="article-content">
         <%= @article.content %>
       </div>
     </div>
+    <br />
+    <%= link_to "Voltar", :back, class: "lnk" %>
   </div>
 </div>

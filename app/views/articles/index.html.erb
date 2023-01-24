@@ -1,18 +1,23 @@
 <div class="container">
   <%= render partial: "alert" %>
-  <div class="article-header">
-    <h3>Artigos</h3>
+  <div class="central">
+    <div class="article-header">
+      <h2>Artigos</h2>
+    </div>
   </div>
   <div class="articles">
     <% @articles.each do |article| %>
       <div class="article-view">
-        <%= article.title %>
-        <br />
-        <%= truncate_article(article, 300) %>
-        <br />
-        Por <i><%= article.user.fullname %></i>
-        <br />
-        <%= link_to "Ver artigo", article_path(article) %>
+        <div class="article-user">
+          <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y") %></i>
+        </div>
+        <div class="article-title">
+          <%= article.title %>
+        </div>
+        <div class="article-body">
+          <%= truncate_article(article, 300) %>
+        </div>
+        <%= link_to "Ver artigo completo", article_path(article), class: "lnk" %>
       </div>
     <% end %>
   </div>
