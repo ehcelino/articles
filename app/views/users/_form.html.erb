@@ -1,41 +1,51 @@
-<h3>Inscrição</h3>
+<div class="central">
+  <%= render partial: "alert" %>
+  <div class="form">
+    <h3>Usuário</h3>
+    <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div id="notice" class="error_messages alert-danger">
+          <h3>Atenção:</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<%= form_for user do |f| %>
-  <% if @user.errors.any? %>
-    <div id="notice" class="error_messages alert-danger">
-      <h3>Atenção:</h3>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Nome de usuário" %><br />
+        </div>
+        <%= f.text_field :username %>
+      </div>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Nome completo" %><br />
+        </div>
+        <%= f.text_field :fullname %>
+      </div>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Email" %><br />
+        </div>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Senha" %><br />
+        </div>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Repita a senha" %><br />
+        </div>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
+    <% end %>
 
-  <div class="field">
-    <div class="label">
-      <%= f.label "Nome de usuário" %><br />
-    </div>
-    <%= f.text_field :username %>
   </div>
-  <div class="field">
-    <div class="label">
-      <%= f.label "Email" %><br />
-    </div>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <div class="label">
-      <%= f.label "Senha" %><br />
-    </div>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <div class="label">
-      <%= f.label "Repita a senha" %><br />
-    </div>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
-<% end %>
-
+</div>

@@ -1,6 +1,6 @@
 <div class="container">
   <%= render partial: "alert" %>
-  <div>
+  <div style="margin-bottom:20px;">
     <div class="content">
       <div class="article-title">
         <h2><%= @article.title %></h2>
@@ -14,6 +14,10 @@
       </div>
     </div>
     <br />
+    <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), class: "lnk" %>
+    <br />
+    <br />
+    <%= render_comments(@comments) %>
     <%= link_to "Voltar", :back, class: "lnk" %>
   </div>
 </div>

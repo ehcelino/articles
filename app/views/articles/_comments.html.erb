@@ -1,0 +1,11 @@
+<% @comments.each do |comment| %>
+    <% timem3 = comment.created_at.time.in_time_zone("Brasilia") %>
+    <% f_time = timem3.strftime("%d/%m/%Y %H:%M") %>
+    <b><%= comment.title %>, <%= f_time %></b>
+    <br />
+    <i><%= comment.user.username %>, <%= comment.user.email %> </i>
+    <p><%= comment.content %></p>
+    <%= link_to "Comentar", new_comment_path(parent_id: comment.id, article_id: @article.id), class:"lnk" %>
+    <% end %>
+    <br />
+    <br />

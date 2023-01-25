@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :sessions
   resources :users
+  resources :comments
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

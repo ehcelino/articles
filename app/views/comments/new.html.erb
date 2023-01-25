@@ -1,0 +1,36 @@
+<div class="central">
+  <%= render partial: "alert" %>
+  <div class="form">
+    <h3>Comentário</h3>
+    <%= form_for @comment do |f| %>
+      <% if @comment.errors.any? %>
+        <div id="notice" class="error_messages alert-danger">
+          <h3>Atenção:</h3>
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Título" %><br />
+        </div>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Comentário" %><br />
+        </div>
+        <%= f.text_area :content, class:"comment-area" %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :parent_id, value: params[:parent_id] %>
+        <%= f.hidden_field :article_id, value: params[:article_id] %>  
+      </div>
+      <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
+    <% end %>
+
+  </div>
+</div>

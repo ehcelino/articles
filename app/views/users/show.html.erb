@@ -1,0 +1,14 @@
+<%= render partial: "alert" %>
+<div class="container">
+  <div>
+    <h3><%= @user.username %></h3>
+    <br />
+    <%= @user.fullname %>
+    <br />
+    <%= @user.email %>
+    <br />
+    <%= link_to "Editar", edit_user_path(@user) %>
+    <br />
+    <%= link_to "Voltar", :back %>
+  </div>
+</div>
