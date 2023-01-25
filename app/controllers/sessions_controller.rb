@@ -10,8 +10,13 @@ class SessionsController < ApplicationController
       else
         cookies[:auth_token] = user.auth_token
       end
-      flash[:success] = "Sessão iniciada com sucesso."
-      redirect_to root_url
+      if user.admin?
+        flash[:success] = "Sessão de administrador iniciada com sucesso."  
+        redirect_to admin_dashboard_index_path
+      else
+        flash[:success] = "Sessão iniciada com sucesso."
+        redirect_to root_url
+      end
     else
       flash[:danger] = "Usuário ou senha inválidos."
       redirect_to login_path

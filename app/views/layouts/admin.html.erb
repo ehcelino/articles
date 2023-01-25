@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Articles</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= yield :page_script %>
+  </head>
+
+  <body>
+    <div class="navigation" id="navTop">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+      <div class="outer">
+        <div class="inner-left">
+          <div class="nav-items">
+            <a href="<%= url_for(root_path) %>" class="active">Início</a>
+            <a href="#news">Artigos</a>
+            <a href="#contact">Contato</a>
+            <a href="#about">Sobre</a>
+          </div>
+        </div>
+        <div class="inner-right" id="rightDiv">
+          <div class="hide-nav" id="hideNav">
+            <div class="nav-items">
+              <%= user_links %>
+            </div>
+          </div>
+        </div>
+      </div>  
+      
+    </div>
+    <div class="outside">
+      <div class="left">
+        <%= yield %>
+      </div>
+      <div class="right">
+      </div>
+    </div>
+
+
+<script>
+
+  setTimeout(function() {
+    var notice = document.getElementById('notice');
+    if(notice){
+      notice.style.display = 'none';
+    }
+  }, 6000);
+
+  function myFunction() {
+    var x = document.getElementById("navTop");
+    var h = document.getElementById("hideNav");
+    if (x.className === "navigation") {
+      x.className += " responsive";
+      h.className +=" responsive";
+    } else {
+      x.className = "navigation";
+      h.className = "hide-nav";
+    }
+  } 
+
+  
+</script>
+
+  </body>
+</html>

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       cookies[:auth_token] = @user.auth_token
-      flash[:notice] = "Logado com sucesso."
+      flash[:success] = "Logado com sucesso."
       redirect_to root_url
     else
       render :new, status: :unprocessable_entity, content_type: "text/html"
