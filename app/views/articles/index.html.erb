@@ -1,3 +1,4 @@
+<% total_pages = (Article.count / @per_page) + (Article.count % @per_page) %>
 <div class="container">
   <%= render partial: "alert" %>
   <div class="central">
@@ -9,16 +10,27 @@
     <% @articles.each do |article| %>
       <div class="article-view">
         <div class="article-user">
-          <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y") %></i>
+          <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y") %></i>
         </div>
         <div class="article-title">
           <%= article.title %>
         </div>
         <div class="article-body">
-          <%= truncate_article(article, 300) %>
+          <%= truncate_article(article, 500) %>
         </div>
         <%= link_to "Ver artigo completo", article_path(article), class: "lnk" %>
+        <div class="comments">
+          <% @comments = article.comments %>
+          <%= render_comments_max(@comments) %>
+        </div>
       </div>
     <% end %>
   </div>
+  <% (1..total_pages).each_with_index do |page, idx| %>
+    <% if @actual.to_i == (idx + 1) %>
+      <%= link_to page, root_path(page: page), class: "btn" %>
+    <% else %>
+      <%= link_to page, root_path(page: page), class: "lnk" %>
+    <% end %>    
+  <% end %>
 </div>

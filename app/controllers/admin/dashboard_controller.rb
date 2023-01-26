@@ -2,7 +2,10 @@ class Admin::DashboardController < ApplicationController
   layout 'admin'
   before_action :check_admin
 
-
+  def index
+    @articles = Article.all
+  end
+  
   private
 
   def check_admin

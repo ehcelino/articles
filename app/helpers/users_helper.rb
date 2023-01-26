@@ -7,6 +7,9 @@ module UsersHelper
       result << link_to("Inscrição", signup_path)
     else
       result << link_to("Bem vindo, #{current_user.username}", user_path(current_user))
+      if current_user.admin?
+        result << link_to("Dashboard", admin_dashboard_index_path)
+      end
       result << link_to("Novo artigo", new_article_path)
       result << link_to("Sair", logout_path)
     end

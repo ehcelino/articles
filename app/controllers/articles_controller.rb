@@ -1,7 +1,13 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all
+    page = params[:page] || 1
+    @per_page = 2
+    offset = (page.to_i - 1) * @per_page
+    @articles = Article.offset(offset).limit(@per_page).order(created_at: :desc)
+    # @articles = Article.all
+    # @comments = Comment.all
+    @actual = params[:page] || 1
   end
 
   def new

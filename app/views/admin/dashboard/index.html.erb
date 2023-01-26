@@ -1,1 +1,24 @@
-<h1>INDEX</h1>
+<div class="container">
+  <%= render partial: "alert" %>
+  <div class="central">
+    <div class="article-header">
+      <h2>Artigos</h2>
+    </div>
+  </div>
+  <div class="articles">
+    <% @articles.each do |article| %>
+      <div class="article-view">
+        <div class="article-user">
+          <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y") %></i>
+        </div>
+        <div class="article-title">
+          <%= article.title %>
+        </div>
+        <div class="article-body">
+          <%= truncate_article(article, 300) %>
+        </div>
+        <%= link_to "Ver artigo completo", article_path(article), class: "lnk" %>
+      </div>
+    <% end %>
+  </div>
+</div>
