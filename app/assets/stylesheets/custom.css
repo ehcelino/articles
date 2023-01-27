@@ -9,9 +9,31 @@ body {
   font-size: small;
 }
 
+div.settings {
+  display:grid;
+  grid-template-columns: max-content max-content;
+  grid-gap:5px;
+}
+div.settings label       { text-align:right; }
+/* div.settings label:after { content: ":"; } */
+
 .comment-area {
   width: 300px;
   height: 100px;
+}
+
+.num-field {
+  width: 60px;
+}
+
+.outside {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inside-right {
+  margin: 20px;
+  /* border: 1px solid red; */
 }
 
 .outer {
@@ -61,7 +83,7 @@ body {
 .alert {
   position:absolute;
   top: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
   color: black;
   padding: 10px;
   margin: 5px;
@@ -75,7 +97,7 @@ body {
 
 .alert-success {
   border: 1px solid blue;
-  background-color: rgb(166, 166, 255);
+  background-color: rgb(111, 167, 240);
 }
 
 #notice {
@@ -116,7 +138,7 @@ body {
 }
 
 .container {
-  margin: 0 3% 5% 3%;
+  margin: 2% 3% 5% 3%;
 }
 
 .hide-nav {

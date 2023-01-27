@@ -19,11 +19,18 @@
 
   <body>
     <%= render partial: "navbar" %>
-    <div class="outside">
-      <div class="left">
+    <div >
+      <div class="inside-left">
         <%= yield %>
       </div>
-      <div class="right">
+      <div class="inside-right">
+        <div>
+        <ul>
+          <li>
+            <%= link_to("Configurações", admin_settings_path) %>
+          </li>
+        </ul>
+        </div>
       </div>
     </div>
 

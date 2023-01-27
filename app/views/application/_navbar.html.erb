@@ -1,4 +1,8 @@
+<% if current_user.admin? %>
+<div class="navigation" id="navTop" style="background-color:red;">
+<% else %>
 <div class="navigation" id="navTop">
+<% end %>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>

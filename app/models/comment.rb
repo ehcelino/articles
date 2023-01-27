@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
   scope :roots, -> { where(parent_id: nil) }
 
   def depth_limit
-    if self.depth >= 5
+    if self.depth >= Setting.comment_depth_limit
       errors.add(:base, "Comment depth limit exceeded")
     end
   end

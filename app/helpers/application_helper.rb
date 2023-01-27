@@ -27,7 +27,7 @@ module ApplicationHelper
     end.join.html_safe
   end
 
-  def render_comments_max(comments, depth = 0, limit = 4)
+  def render_comments_max(comments, depth = 0, limit = Setting.comments_limit)
     qtty = comments.count
     comments = comments.first(limit).select {|comment| comment.parent.nil? }
     comments_html = comments.map do |comment|

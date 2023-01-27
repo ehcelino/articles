@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @per_page = 2
+    @per_page = Setting.per_page
     offset = (page.to_i - 1) * @per_page
     @articles = Article.offset(offset).limit(@per_page).order(created_at: :desc)
     # @articles = Article.all
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:notice] = "Artigo criado com sucesso."
+      flash[:success] = "Artigo criado com sucesso."
       redirect_to article_path(@article)
     else
       render :new, status: :unprocessable_entity, content_type: "text/html"

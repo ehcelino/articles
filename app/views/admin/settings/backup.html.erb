@@ -1,0 +1,46 @@
+<div class="container">
+  <%= render partial: "alert" %>
+  <%= form_for(Setting.new, url: admin_settings_path) do |f| %>
+    <% if !@errors.nil? %>
+      <% if @errors.any? %>
+        <div class="alert alert-block alert-danger">
+          <ul>
+            <% @errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+      <div class="field">
+        <div class="label">
+          <%= f.label "Artigos por página na visualização padrão" %><br />
+        </div>
+      <%= f.number_field :per_page, value: Setting.per_page, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label "Limite de comentários" %><br />
+      </div>
+      <%= f.number_field :comments_limit, value: Setting.comments_limit, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label "Quantidade de palavras do artigo na visualização de grupo" %><br />
+      </div>
+      <%= f.number_field :truncate_limit, value: Setting.truncate_limit, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <div class="label">
+        <%= f.label "Máximo nível de comentários" %><br />
+      </div>
+      <%= f.number_field :comment_depth_limit, value: Setting.comment_depth_limit, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Enviar', class: "btn" %>
+    </div>
+  <% end %>
+</div>
