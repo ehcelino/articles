@@ -15,8 +15,13 @@
         <div class="article-title">
           <%= article.title %>
         </div>
-        <div class="article-body">
-          <%= truncate_article(article, Setting.truncate_limit) %>
+        <div class="outer">
+          <div class="article-body">
+            <%= truncate_article(article, Setting.truncate_limit) %>
+          </div>
+          <div>
+            <%= return_img(article.content) %>
+          </div>
         </div>
         <%= link_to "Ver artigo completo", article_path(article), class: "lnk" %>
         <div class="comments">

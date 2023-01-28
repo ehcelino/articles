@@ -4,6 +4,13 @@
   --btn-text: #ffffff;
 }
 
+.resize {
+  height: auto; 
+  width: auto; 
+  max-width: 100px; 
+  max-height: 100px;
+}
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: small;
