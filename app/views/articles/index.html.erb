@@ -11,8 +11,13 @@
     <% @articles.each do |article| %>
       <div class="article-view">
         <div class="article-user">
-          <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y") %></i>
+          <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y %H:%M") %></i>
         </div>
+        <% if article.date_time_changed? %>
+          <div class="article-user">
+            <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
+          </div>
+        <% end %>
         <div class="article-title">
           <%= article.title %>
         </div>
