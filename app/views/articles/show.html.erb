@@ -6,8 +6,12 @@
         <h2><%= @article.title %></h2>
       </div>
       <div class="article-author">
-        <%= @article.created_at.strftime("%d/%m/%Y") %> - 
+        <%= @article.created_at.strftime("%d/%m/%Y %H:%M") %> - 
         <i>Por <%= @article.user.fullname %></i> - <i><%= @article.user.email %></i>
+        <% if @article.date_time_changed? %>
+          <br />
+          Editado em: <%= @article.updated_at.strftime("%d/%m/%Y %H:%M") %>
+        <% end %>
       </div>
       <div class="article-content">
         <%= @article.content %>

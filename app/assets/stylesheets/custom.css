@@ -132,7 +132,7 @@ div.settings label       { text-align:right; }
 }
 
 .article-view {
-  margin: 25px 0 25px 0;
+  margin: 50px 0 50px 0;
 }
 
 .article-user {
@@ -141,7 +141,8 @@ div.settings label       { text-align:right; }
 
 .article-body {
   color:rgb(107, 107, 107);
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
+  font-size:small;
 }
 
 .container {
@@ -156,12 +157,18 @@ div.settings label       { text-align:right; }
   color: black;
 }
 
+.article-link {
+  text-decoration: none;
+}
+
 .article-title {
   font-family: Garamond, Times, serif;
   font-size:x-large;
   font-weight: bold;
   border-bottom: 1px solid black;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .comment-title {

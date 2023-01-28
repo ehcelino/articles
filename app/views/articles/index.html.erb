@@ -3,7 +3,7 @@
 <div class="container">
   <%= render partial: "alert" %>
   <div class="central">
-    <div class="article-header">
+    <div class="article-title">
       <h2>Artigos</h2>
     </div>
   </div>
@@ -18,23 +18,26 @@
             <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
           </div>
         <% end %>
+        <%= link_to article_path(article), class:"article-link" do %>
         <div class="article-title">
           <%= article.title %>
         </div>
         <div class="outer">
           <div class="article-body">
             <%= truncate_article(article, Setting.truncate_limit) %>
+            <strong><%= link_to "Ver artigo completo", article_path(article), class: "lnk" %></strong>
           </div>
+          <% end %>
           <div>
             <%= return_img(article.content) %>
           </div>
         </div>
         <div>
           <% if current_user.id == article.user.id %>
-            <%= link_to "Editar", edit_article_path(article) %>
+            <%= link_to "Editar", edit_article_path(article), class: "lnk" %>
           <% end %>
         </div>
-        <%= link_to "Ver artigo completo", article_path(article), class: "lnk" %>
+        
         <div class="comments">
           <% @comments = article.comments %>
           <%= render_comments_max(@comments) %>
