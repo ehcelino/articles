@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "articles#index"
+  get "about", to: 'home#about'
+  get "contact", to: 'home#contact'
   # redireciona os erros 404
   get '*path', to: 'errors#not_found', via: :all, :constraints => { :path => /[^(assets|images|javascripts|stylesheets)]/ }
 end

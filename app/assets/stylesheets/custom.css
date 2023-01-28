@@ -117,6 +117,10 @@ div.settings label       { text-align:right; }
   justify-content: center;
 }
 
+.ico-blue {
+  color: var(--btn-face)
+}
+
 .btn {
   background-color: var(--btn-face);
   color: var(--btn-text);
@@ -137,6 +141,7 @@ div.settings label       { text-align:right; }
 
 .article-user {
   font-size:x-small;
+  color: black;
 }
 
 .article-body {

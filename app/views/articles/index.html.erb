@@ -4,12 +4,17 @@
   <%= render partial: "alert" %>
   <div class="central">
     <div class="article-title">
-      <h2>Artigos</h2>
+      <h2><i class="fa-solid fa-pen-nib ico-blue"></i> Artigos</h2>
     </div>
   </div>
   <div class="articles">
     <% @articles.each do |article| %>
       <div class="article-view">
+        
+        <%= link_to article_path(article), class:"article-link" do %>
+        <div class="article-title">
+          <%= article.title %>
+        </div>
         <div class="article-user">
           <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y %H:%M") %></i>
         </div>
@@ -18,10 +23,6 @@
             <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
           </div>
         <% end %>
-        <%= link_to article_path(article), class:"article-link" do %>
-        <div class="article-title">
-          <%= article.title %>
-        </div>
         <div class="outer">
           <div class="article-body">
             <%= truncate_article(article, Setting.truncate_limit) %>

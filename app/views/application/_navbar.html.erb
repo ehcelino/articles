@@ -4,15 +4,14 @@
 <div class="navigation" id="navTop">
 <% end %>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
+    <i class="fa fa-bars ico-blue"></i>
   </a>
   <div class="outer">
     <div class="inner-left">
       <div class="nav-items">
-        <a href="<%= url_for(root_path) %>" class="active"><i class="fa-solid fa-house"> </i> Início</a>
-        <a href="#news">Artigos</a>
-        <a href="#contact">Contato</a>
-        <a href="#about">Sobre</a>
+        <a href="<%= url_for(root_path) %>" class="active"><i class="fa-solid fa-house ico-blue"> </i> Início</a>
+        <a href="<%= url_for(contact_path) %>"><i class="fa-solid fa-envelope ico-blue"></i> Contato</a>
+        <a href="<%= url_for(about_path) %>"><i class="fa-solid fa-circle-info ico-blue"></i> Sobre</a>
       </div>
     </div>
     <div class="inner-right" id="rightDiv">
