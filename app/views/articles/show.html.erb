@@ -7,11 +7,17 @@
       </div>
       <div class="article-author">
         <%= @article.created_at.strftime("%d/%m/%Y") %> - 
-        Por <i><%= @article.user.fullname %></i> - <i><%= @article.user.email %></i>
+        <i>Por <%= @article.user.fullname %></i> - <i><%= @article.user.email %></i>
       </div>
       <div class="article-content">
         <%= @article.content %>
       </div>
+    </div>
+    <br />
+    <div>
+      <% if current_user.id == @article.user.id %>
+        <%= link_to "Editar", edit_article_path(@article) %>
+      <% end %>
     </div>
     <br />
     <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), class: "lnk" %>

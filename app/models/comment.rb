@@ -7,11 +7,13 @@ class Comment < ApplicationRecord
   belongs_to :parent, class_name: 'Comment', optional: true
   scope :roots, -> { where(parent_id: nil) }
 
-  def depth_limit
-    if self.depth >= Setting.comment_depth_limit
-      errors.add(:base, "Comment depth limit exceeded")
-    end
-  end
+  # def depth_limit
+  #   if self.depth >= Setting.comment_depth_limit
+  #     errors.add(:base, "Comment depth limit exceeded")
+  #     flash[:danger] = "Limite de comentários atingido."
+  #     redirect_to :back
+  #   end
+  # end
 
   # def set_depth
   #   if parent.present?

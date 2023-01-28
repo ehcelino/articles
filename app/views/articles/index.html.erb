@@ -1,4 +1,5 @@
-<% total_pages = (Article.count / @per_page) + (Article.count % @per_page) %>
+<% total_pages = (Article.count / @per_page) %>
+<% total_pages += 1 if Article.count % @per_page != 0 %>
 <div class="container">
   <%= render partial: "alert" %>
   <div class="central">
@@ -22,6 +23,11 @@
           <div>
             <%= return_img(article.content) %>
           </div>
+        </div>
+        <div>
+          <% if current_user.id == article.user.id %>
+            <%= link_to "Editar", edit_article_path(article) %>
+          <% end %>
         </div>
         <%= link_to "Ver artigo completo", article_path(article), class: "lnk" %>
         <div class="comments">

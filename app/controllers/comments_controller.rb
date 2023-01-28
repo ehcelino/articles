@@ -57,11 +57,11 @@ class CommentsController < ApplicationController
       end
     end
 
-    def store_history
-      session[:history] ||= []
-      session[:history].delete_at(0) if session[:history].size >= 5
-      session[:history] << request.url
-    end
+    # def store_history
+    #   session[:history] ||= []
+    #   session[:history].delete_at(0) if session[:history].size >= 5
+    #   session[:history] << request.url
+    # end
 
     def check_depth_limit
       Rails.logger.error("Entrou no check_depth_limit")
@@ -69,7 +69,7 @@ class CommentsController < ApplicationController
         Rails.logger.error("This is an error message")
         parent_comment = Comment.find(params[:parent_id])
         if parent_comment.depth >= 4
-          flash[:danger] = "Atingido número máximo de comentários."
+          flash[:danger] = "Atingida profundidade máxima de comentários (#{Setting.comment_depth_limit})."
           redirect_to article_path(parent_comment.article)
         end
       end

@@ -10,8 +10,8 @@ module ApplicationHelper
         content_tag(:i, class: "comment-user") do
           comment.user.username
         end +
-        content_tag(:div, class: "created_at") do
-          comment.created_at
+        content_tag(:div, class: "comment-user") do
+          comment.created_at.strftime("%d/%m/%Y")
         end +
         content_tag(:div, class: "comment-content") do
           comment.content
