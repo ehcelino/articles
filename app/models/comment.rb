@@ -1,9 +1,9 @@
 class Comment < ApplicationRecord
   # before_save :set_depth
-  validate :depth_limit
+  # validate :depth_limit
   belongs_to :article
   belongs_to :user
-  has_many :children, class_name: 'Comment', foreign_key: 'parent_id'
+  has_many :children, class_name: 'Comment', foreign_key: 'parent_id', dependent: :destroy
   belongs_to :parent, class_name: 'Comment', optional: true
   scope :roots, -> { where(parent_id: nil) }
 
