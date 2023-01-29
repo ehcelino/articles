@@ -5,4 +5,14 @@ setTimeout(function() {
     notice.style.display = 'none';
   }
 }, 6000);
+
+
+function hideNotice() {
+  var notice = document.getElementById('notice');
+  if(notice){
+    notice.style.display = 'none';
+  }
+}
+
+setTimeout(function() { hideNotice(); }, 6000);
 </script>

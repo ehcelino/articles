@@ -7,8 +7,8 @@
 .resize {
   height: auto; 
   width: auto; 
-  max-width: 100px; 
-  max-height: 100px;
+  max-width: 200px; 
+  max-height: 200px;
 }
 
 body {
@@ -129,10 +129,10 @@ div.settings label       { text-align:right; }
   /* background-color: white; */
 }
 
-#notice {
+/* #notice {
   transition: all 0.5s ease-in-out;
   opacity: 1;
-}
+} */
 
 .central {
   display:flex;
@@ -290,5 +290,32 @@ div.settings label       { text-align:right; }
   .hide-nav.responsive {
     display: inline;
   }
+
+  div.settings {
+    display:grid;
+    grid-template-columns:auto auto;
+    /* grid-gap:5px; */
+  }
+  div.settings label       { text-align:right; }
 }
 
+
+
+
+/* Opção de esconder a notice com css. O problema
+é que ela só fica transparente, o div fica por
+cima da barra de atalhos. */
+/* #notice {
+  -webkit-animation: cssAnimation 5s forwards; 
+  animation: cssAnimation 5s forwards;
+}
+@keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+} */

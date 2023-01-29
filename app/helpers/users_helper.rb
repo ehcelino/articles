@@ -8,8 +8,8 @@ module UsersHelper
     else
       result << link_to(content_tag(:i, " ", class:"fa-solid fa-user ico-blue") + " Bem vindo, #{current_user.username}", user_path(current_user))
       if current_user.admin?
-        result << link_to("Dashboard", admin_dashboard_index_path)
-        result << link_to("Configurações", admin_settings_path)
+        result << link_to(content_tag(:i, " ", class:"fa-solid fa-clipboard ico-blue") + " Dashboard", admin_dashboard_index_path)
+        result << link_to(content_tag(:i, " ", class:"fa-solid fa-gear ico-blue") + " Configurações", admin_settings_path)
       end
       result << link_to(content_tag(:i, " ", class:"fa-solid fa-pen-nib ico-blue") + " Novo artigo", new_article_path)
       result << link_to(content_tag(:i, " ", class:"fa-solid fa-arrow-right ico-blue") + " Sair", logout_path)

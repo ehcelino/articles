@@ -28,14 +28,11 @@
 
 <script>
 
-function hideNotice() {
-  var notice = document.getElementById('notice');
-  if(notice){
-    notice.style.display = 'none';
-  }
-}
 
-setTimeout(function() { hideNotice(); }, 6000);
+$(document).ready(function() {
+  $('#notice').fadeOut(3000); // 5 seconds x 1000 milisec = 5000 milisec
+});
+
 
 
   function myFunction() {
