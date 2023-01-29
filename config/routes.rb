@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   get "about", to: 'home#about'
   get "contact", to: 'home#contact'
   # redireciona os erros 404
-  get '*path', to: 'errors#not_found', constraints: ->(request){ !request.path.starts_with?('/assets') && !request.path.starts_with?('/images') && !request.path.starts_with?('/javascripts') && !request.path.starts_with?('/stylesheets') && !request.path.starts_with?('/rails') }
+  get '*path', to: 'errors#not_found', constraints: ->(request){ !request.path.starts_with?('/assets') && !request.path.starts_with?('/images') && !request.path.starts_with?('/javascripts') && !request.path.starts_with?('/stylesheets') && !request.path.starts_with?('/rails/active_storage') }
 end
