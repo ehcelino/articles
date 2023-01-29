@@ -31,7 +31,8 @@ class UsersController < ApplicationController
       return redirect_to user_path(@user)
     else
       flash[:danger] = "Algo deu errado."
-      render :edit
+      # render :edit
+      redirect_to edit_user_path(@user)
     end
   end
 

@@ -1,6 +1,6 @@
 <div class="central">
   <%= render partial: "alert" %>
-  <div>
+  <div style="width:100%;">
     <div class="article-top">
       <h3>Artigo</h3>
     </div>
@@ -10,7 +10,7 @@
           <div class="label">
             <%= f.label "Título" %><br />
           </div>
-          <%= f.text_field :title %>
+          <%= f.text_field :title, id:"article-title" %>
         </div>
         <div class="field">
           <div class="label">
@@ -20,7 +20,7 @@
         </div>
         <div class="field">
           <div class="label">
-            <%= f.label "Corpo" %><br />
+            <%= f.label " " %><br />
           </div>
           <%= f.rich_text_area :content %>
         </div>

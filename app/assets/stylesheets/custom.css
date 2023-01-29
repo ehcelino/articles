@@ -124,6 +124,10 @@ div.settings label       { text-align:right; }
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#article-title {
+  width: 250px;
+}
+
 .alert-success {
   border: 2px solid rgb(78, 114, 182);
   /* background-color: white; */
