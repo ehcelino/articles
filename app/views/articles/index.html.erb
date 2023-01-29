@@ -9,7 +9,7 @@
   </div>
   <div class="articles">
     <% @articles.each do |article| %>
-      <div class="article-view">
+      <div class="article-view bordered shadowed padded">
         
         <%= link_to article_path(article), class:"article-link" do %>
         <div class="article-title">

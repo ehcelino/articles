@@ -1,5 +1,6 @@
 <div class="alert-out">
   <% flash.each do |key, value| %>
-    <div id="notice" class="margins alert alert-<%= key %>"><%= value %></div>
+    <div id="notice" class="margins alert shadowed alert-<%= key %>">
+    <i class="fa-solid fa-circle-info ico-<%= key %>"></i> <%= value %></div>
   <% end %>
 </div>

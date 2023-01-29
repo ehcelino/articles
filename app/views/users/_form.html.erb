@@ -1,6 +1,7 @@
+<div class="container">
 <div class="central">
   <%= render partial: "alert" %>
-  <div class="form">
+  <div class="form padded bordered shadowed">
     <h3>Usuário</h3>
     <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
@@ -48,4 +49,5 @@
     <% end %>
 
   </div>
+</div>
 </div>

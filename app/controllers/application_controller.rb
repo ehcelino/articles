@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   require 'ostruct'
   before_action :store_history
-  after_action :check_for_404
+  # after_action :check_for_404
   
   private
 
@@ -33,10 +33,10 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
-  def check_for_404
-    if response.status == 404
-      render :template => "errors/not_found"
-    end
-  end
+  # def check_for_404
+  #   if response.status == 404
+  #     render :template => "errors/not_found"
+  #   end
+  # end
   
 end
