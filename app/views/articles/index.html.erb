@@ -61,11 +61,15 @@
       </div>
     <% end %>
   </div>
+  <div class="central">
+  <div class="pages">
   <% (1..total_pages).each_with_index do |page, idx| %>
     <% if @actual.to_i == (idx + 1) %>
-      <%= link_to page, root_path(page: page), class: "btn" %>
+      <%= link_to page, root_path(page: page), class: "btn pages" %>
     <% else %>
-      <%= link_to page, root_path(page: page), class: "lnk" %>
+      <%= link_to page, root_path(page: page), class: "lnk pages" %>
     <% end %>    
   <% end %>
+  </div>
+  </div>
 </div>

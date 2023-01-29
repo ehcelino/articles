@@ -252,6 +252,7 @@ div.settings label       { text-align:right; }
   padding: 50px;
   position: relative;
   overflow: hidden;
+  z-index: -1;
 }
 
 /* .sec-title-outer {
@@ -375,6 +376,9 @@ ul.no-bullets {
     display: none;
   }
 
+  .pages {
+    font-size:x-large;
+  }
 }
 
 
