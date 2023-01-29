@@ -5,7 +5,7 @@
     <h3>Usuário</h3>
     <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
-        <div id="notice" class="error_messages alert-danger">
+        <div id="error" class="error_messagess">
           <h3>Atenção:</h3>
           <ul>
             <% @user.errors.full_messages.each do |message| %>

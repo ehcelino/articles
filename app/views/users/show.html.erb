@@ -1,14 +1,21 @@
 <%= render partial: "alert" %>
-<div class="container padded bordered shadowed">
+<div class="central">
+  <div class="container padded bordered shadowed">
+    <div>
+      <h3><%= @user.username %></h3>
+      <br />
+      <%= @user.fullname %>
+      <br />
+      <%= @user.email %>
+      <br />
+      
+    </div>
+  </div>
+</div>
+<div class="central">
   <div>
-    <h3><%= @user.username %></h3>
-    <br />
-    <%= @user.fullname %>
-    <br />
-    <%= @user.email %>
-    <br />
-    <%= link_to "Editar", edit_user_path(@user) %>
-    <br />
-    <%= link_to "Voltar", :back %>
+  <%= link_to "Editar", edit_user_path(@user) %>
+      <br />
+      <%= link_to "Voltar", :back %>
   </div>
 </div>
