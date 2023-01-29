@@ -5,9 +5,9 @@
     <h3>Inscrição</h3>
     <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
-        <div id="notice" class="error_messages alert-danger">
+        <div id="notice" class="error_messages alert-danger" style="width:150px; z-index: 99; position:absolute; background-color:white;">
           <h3>Atenção:</h3>
-          <ul>
+          <ul class="no-bullets">
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>

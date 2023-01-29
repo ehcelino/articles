@@ -1,12 +1,27 @@
 <% total_pages = (Article.count / @per_page) %>
 <% total_pages += 1 if Article.count % @per_page != 0 %>
-<div class="container">
-  <%= render partial: "alert" %>
-  <div class="central">
-    <div class="article-title">
-      <h2><i class="fa-solid fa-pen-nib ico-blue"></i> Artigos</h2>
+<% if @actual.to_i == 1 %>
+  <div class="main-header">
+    <div class="main-title-outer">
+      <h1 class="main-title"><i class="fa-solid fa-pen-nib ico-blue"></i> Artigos</h1>
+      <h4>Informação no tamanho certo</h4>
+    </div>
+    <div class="main-middle">
+    </div>
+    <div class="sec-title-outer">
+      <p class="sec-title"></p>
     </div>
   </div>
+<% end %>
+<div class="container">
+  <%= render partial: "alert" %>
+  <% if @actual.to_i != 1 %>
+    <div class="central">
+      <div class="article-title">
+        <h2></h2><i class="fa-solid fa-pen-nib ico-blue"></i> Artigos</h2>
+      </div>
+    </div>
+  <% end %>
   <div class="articles">
     <% @articles.each do |article| %>
       <div class="article-view bordered shadowed padded">

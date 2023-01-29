@@ -25,7 +25,7 @@ div.settings label       { text-align:right; }
 /* div.settings label:after { content: ":"; } */
 
 .comment-area {
-  width: 300px;
+  width: 99%;
   height: 100px;
 }
 
@@ -138,6 +138,17 @@ div.settings label       { text-align:right; }
   opacity: 1;
 } */
 
+.error_messages {
+  width:150px; 
+  z-index: 99; 
+  position:absolute; 
+  background-color:white;
+}
+
+.about {
+  width: 60%;
+}
+
 .central {
   display:flex;
   justify-content: center;
@@ -229,6 +240,53 @@ div.settings label       { text-align:right; }
   font-size:small;
 }
 
+.main-header {
+  background-color:rgb(241, 205, 85);
+  width: 100%;
+  margin: 0;
+  box-sizing:border-box;
+  height: 50%;
+  display: flex;
+  align-items: baseline;
+  /* justify-content: space-between; */
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* .sec-title-outer {
+  width: 150px;
+  padding: 20px;
+  background-color: var(--btn-face);
+  border-radius: 10px;
+} */
+
+.sec-title {
+  font-family: Garamond, Times, serif;
+  font-weight: bold;
+  font-size:x-large;
+}
+
+.main-middle {
+  width: 30%;
+}
+
+.main-title {
+  font-family: Garamond, Times, serif;
+  font-size:70px;
+  font-weight: bold;
+}
+
+.main-title-outer {
+  border-bottom: 1px solid black;
+}
+
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
 /* Style the links inside the navigation bar */
 .navigation a {
   float: left;
@@ -301,6 +359,22 @@ div.settings label       { text-align:right; }
     /* grid-gap:5px; */
   }
   div.settings label       { text-align:right; }
+  .about {
+    width: 100%;
+  }
+
+  .main-title {
+    font-size:40px;
+  }
+
+  .sec-title-outer {
+    display: none;
+  }
+
+  .main-middle {
+    display: none;
+  }
+
 }
 
 

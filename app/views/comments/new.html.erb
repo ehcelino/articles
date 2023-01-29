@@ -1,6 +1,7 @@
+<div class="container">
 <div class="central">
   <%= render partial: "alert" %>
-  <div class="form">
+  <div class="form padded bordered shadowed about">
     <h3>Comentário</h3>
     <%= form_for @comment do |f| %>
       <% if @comment.errors.any? %>
@@ -33,4 +34,5 @@
     <% end %>
 
   </div>
+</div>
 </div>

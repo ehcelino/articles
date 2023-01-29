@@ -30,9 +30,9 @@ class UsersController < ApplicationController
       flash[:success] = 'Informações atualizadas com sucesso.'
       return redirect_to user_path(@user)
     else
-      flash[:danger] = "Algo deu errado."
-      # render :edit
-      redirect_to edit_user_path(@user)
+      # flash[:danger] = "Algo deu errado."
+      render :edit, status: :unprocessable_entity, content_type: "text/html"
+      # redirect_to edit_user_path(@user)
     end
   end
 

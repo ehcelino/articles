@@ -3,12 +3,12 @@
   <%= render partial: "alert" %>
   <div class="form padded bordered shadowed">
     <h3>Usuário</h3>
-    <%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
-        <div id="error" class="error_messagess">
+    <%= form_for user do |f| %>
+      <% if user.errors.any? %>
+        <div id="notice" class="error_messages alert-danger" style="width:150px;">
           <h3>Atenção:</h3>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
+          <ul class="no-bullets">
+            <% user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>
