@@ -8,4 +8,16 @@ class Article < ApplicationRecord
     created_at.strftime("%Y-%m-%d %H:%M") != updated_at.strftime("%Y-%m-%d %H:%M")
   end
   
+  def as_json(options = {})
+    super(options.merge(methods: [:author_name, :content_plain_text]))
+    
+  end
+
+  def content_plain_text
+    ActionView::Base.full_sanitizer.sanitize(content.body.to_s)
+  end
+
+  def author_name
+    user.fullname
+  end
 end

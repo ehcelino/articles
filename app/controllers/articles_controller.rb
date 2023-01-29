@@ -30,6 +30,11 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comments = @article.comments.roots
+    respond_to do |format|
+      format.html
+      format.json { render json: @article }
+    end
+
   end
 
   def create

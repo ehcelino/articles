@@ -2,6 +2,7 @@
   --btn-face: #1e90ff;
   --btn-border: #007ffd;
   --btn-text: #ffffff;
+  --bkg-yellow: rgb(241, 205, 85);
 }
 
 .resize {
@@ -14,6 +15,7 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: small;
+  cursor: url('/assets/cursor.png'), auto;
 }
 
 div.settings {
