@@ -12,6 +12,14 @@
         <a href="<%= url_for(root_path) %>" class="active"><i class="fa-solid fa-house ico-blue"> </i> Início</a>
         <a href="<%= url_for(contact_path) %>"><i class="fa-solid fa-envelope ico-blue"></i> Contato</a>
         <a href="<%= url_for(about_path) %>"><i class="fa-solid fa-circle-info ico-blue"></i> Sobre</a>
+        <a href="#" onclick="myDrop();return false;" class="droplnk" id="drop_link"><i class="fa-solid fa-list ico-blue"></i> Categorias</a>  
+        <div class="dropdown">
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
       </div>
     </div>
     <div class="inner-right" id="rightDiv">
@@ -23,3 +31,30 @@
     </div>
   </div>  
 </div>
+
+<script>
+
+const link = document.getElementById("drop_link");
+const width = link.offsetWidth;
+document.getElementById("myDropdown").style.left = `-${width}px`;
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myDrop() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.droplnk')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+</script>
+
