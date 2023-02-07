@@ -39,7 +39,14 @@ $(document).ready(function() {
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myDrop() {
+  const link2 = document.getElementById("drop_link");
+  const width2 = link2.offsetWidth;
   document.getElementById("myDropdown").classList.toggle("show");
+  if (window.innerWidth < 800) {
+    document.getElementById("myDropdown").style.left = `0px`;
+  } else {
+    document.getElementById("myDropdown").style.left = `-${width2}px`;
+  };
 }
 
 // Close the dropdown menu if the user clicks outside of it
