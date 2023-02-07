@@ -4,6 +4,17 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+
+  def index
+    page = params[:page] || 1
+    @per_page = Setting.per_page
+    offset = (page.to_i - 1) * @per_page
+    @articles = Article.where(category: params[:id]).offset(offset).limit(@per_page).order(created_at: :desc)
+    # @articles = Article.all
+    # @comments = Comment.all
+    @actual = params[:page] || 1
+  end
+
   def create
     @category = Category.new(category_params)
     if @category.save

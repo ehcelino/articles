@@ -12,7 +12,7 @@
         <div class="dropdown">
           <div id="myDropdown" class="dropdown-content">
             <% Category.all.each do |category| %>
-              <%= link_to category.name, category_path(category) %>
+              <%= link_to category.name, cat_path(category.id) %>
             <% end %>
           </div>
         </div> 
