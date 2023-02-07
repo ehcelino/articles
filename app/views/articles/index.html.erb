@@ -39,6 +39,9 @@
             <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
           </div>
         <% end %>
+        <div class="article-user">
+          Categoria: <%= article.category.name %>
+        </div>
         <div class="outer">
           <div class="article-body">
             <%= truncate_article(article, Setting.truncate_limit) %>

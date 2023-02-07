@@ -1,8 +1,4 @@
-<% if current_user.admin? %>
-<div class="navigation" id="navTop" style="background-color:rgb(119, 44, 44);">
-<% else %>
 <div class="navigation" id="navTop">
-<% end %>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars ico-blue"></i>
   </a>
@@ -15,9 +11,9 @@
         <a href="#" onclick="myDrop();return false;" class="droplnk" id="drop_link"><i class="fa-solid fa-list ico-blue"></i> Categorias</a>  
         <div class="dropdown">
           <div id="myDropdown" class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <% Category.all.each do |category| %>
+              <%= link_to category.name, category_path(category) %>
+            <% end %>
           </div>
         </div> 
       </div>
@@ -34,9 +30,12 @@
 
 <script>
 
-const link = document.getElementById("drop_link");
-const width = link.offsetWidth;
-document.getElementById("myDropdown").style.left = `-${width}px`;
+$(document).ready(function() {
+  const link = document.getElementById("drop_link");
+  const width = link.offsetWidth;
+  document.getElementById("myDropdown").style.left = `-${width}px`;
+});
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myDrop() {
