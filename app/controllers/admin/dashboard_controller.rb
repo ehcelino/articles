@@ -4,6 +4,8 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @articles = Article.all
+    @comments = Comment.all
+    @users = User.all
   end
   
   private

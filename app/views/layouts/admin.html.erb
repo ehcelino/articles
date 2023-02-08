@@ -13,6 +13,7 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 <%
 =end%>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/43908e947d.js" crossorigin="anonymous"></script>
     <%= yield :page_script %>
   </head>
@@ -37,22 +38,24 @@
 
 <script>
 
-  setTimeout(function() {
-    var notice = document.getElementById('notice');
-    if(notice){
-      notice.style.display = 'none';
-    }
-  }, 6000);
+  $(document).ready(function() {
+  $('#notice').delay(2000).fadeOut(2000); // 5 seconds x 1000 milisec = 5000 milisec
+});
+
+
 
   function myFunction() {
     var x = document.getElementById("navTop");
     var h = document.getElementById("hideNav");
+    var h2 = document.getElementById("hideNav2");
     if (x.className === "navigation") {
       x.className += " responsive";
       h.className +=" responsive";
+      h2.className +=" responsive";
     } else {
       x.className = "navigation";
       h.className = "hide-nav";
+      h2.className +="hide-nav2";
     }
   } 
 

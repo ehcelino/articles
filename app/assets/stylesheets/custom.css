@@ -423,7 +423,7 @@ ul.no-bullets {
   display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .navigation a:not(:first-child) {display: none;}
   .navigation a.icon {
     float: right;
@@ -431,19 +431,22 @@ ul.no-bullets {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .navigation.responsive {
     position: relative;
     width: 106%;
     margin-left: -3%;
     margin-right: -3%;
     margin-top: -2%;
-    padding: 6px;
+    padding-left: 1%;
+    padding-right: 1%;
+    box-sizing: border-box;
   }
   .navigation.responsive a.icon {
-    position: absolute;
+    float:right;
+    /* position: absolute;
     right: 0;
-    top: 0;
+    top: 0; */
   }
   .navigation.responsive a {
     float: none;
@@ -455,7 +458,7 @@ ul.no-bullets {
     margin-left: -3%;
     margin-right: -3%;
     margin-top: -2%;
-    padding-right: 3px;
+    padding-right: 1%;
   }
   .outer {
     display:inline;
