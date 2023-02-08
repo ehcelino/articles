@@ -192,6 +192,10 @@ div.settings label       { text-align:right; }
   display: inline;
 }
 
+.hide-nav2 {
+  display: inline;
+}
+
 .lnk {
   color: black;
 }
@@ -420,6 +424,12 @@ ul.no-bullets {
     display: none;
   }
   .hide-nav.responsive {
+    display: inline;
+  }
+  .hide-nav2 {
+    display: none;
+  }
+  .hide-nav2.responsive {
     display: inline;
   }
 
