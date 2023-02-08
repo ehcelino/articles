@@ -341,6 +341,21 @@ ul.no-bullets {
   justify-content:flex-start;
   position: absolute;
   top: 32px;
+  left: 300px;
+  background-color: #333;
+  min-width: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  float: none;
+  text-align: left;
+}
+
+.dropdown-content2 {
+  display: none;
+  flex-direction: column;
+  justify-content:flex-start;
+  position: fixed;
+  top: 41px;
   left: 0px;
   background-color: #333;
   min-width: 260px;
@@ -423,6 +438,7 @@ ul.no-bullets {
     margin-left: -3%;
     margin-right: -3%;
     margin-top: -2%;
+    padding: 6px;
   }
   .navigation.responsive a.icon {
     position: absolute;
@@ -439,6 +455,7 @@ ul.no-bullets {
     margin-left: -3%;
     margin-right: -3%;
     margin-top: -2%;
+    padding-right: 3px;
   }
   .outer {
     display:inline;

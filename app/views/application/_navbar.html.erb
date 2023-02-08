@@ -22,7 +22,25 @@
     </div>
     <div class="inner-right" id="rightDiv">
       <div class="hide-nav" id="hideNav">
-        <div class="nav-items">
+        
+        
+
+
+        <div class="nav-items" id="adm_stuff">
+
+          <% if current_user.admin? %>
+            <a href="#" onclick="adminDrop();return false;" class="droplnk" id="adm_link"><i class="fa-solid fa-list ico-blue"></i> Administração</a>  
+            <div class="dropdown">
+              <div id="adminDropdown" class="dropdown-content2">
+                <%= link_to(content_tag(:i, " ", class:"fa-solid fa-clipboard ico-blue") + " Dashboard", admin_dashboard_index_path) %>
+                <%= link_to(content_tag(:i, " ", class:"fa-solid fa-gear ico-blue") + " Configurações", admin_settings_path) %>
+                <%= link_to(content_tag(:i, " ", class:"fa-solid fa-pen-nib ico-blue") + " Novo artigo", new_article_path) %>
+              </div>
+            </div>
+          <% end %>
+
+
+
           <%= user_links %>
         </div>
       </div>
@@ -32,14 +50,39 @@
 
 <script>
 
+function getOffset(el) {
+  const rect = el.getBoundingClientRect();
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY
+  };
+}
+
 $(document).ready(function() {
   const link = document.getElementById("drop_link");
   const width = link.offsetWidth;
+  console.log(width)
   document.getElementById("myDropdown").style.left = `-${width}px`;
+
+  const link3 = document.getElementById("adm_link");
+  const width3 = link3.style.left;
+  document.getElementById("adminDropdown").style.left = `${width3}px`;
 });
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+function adminDrop() {
+  const link4 = document.getElementById("adm_link");
+  const width4 = getOffset(link4).left;
+  console.log(width4)
+  document.getElementById("adminDropdown").classList.toggle("show");
+  if (window.innerWidth < 800) {
+    document.getElementById("adminDropdown").style.left = `0px`;
+  } else {
+    document.getElementById("adminDropdown").style.left = `${width4}px`;
+  };
+}
+
 function myDrop() {
   const link2 = document.getElementById("drop_link");
   const width2 = link2.offsetWidth;
@@ -50,6 +93,10 @@ function myDrop() {
     document.getElementById("myDropdown").style.left = `-${width2}px`;
   };
 }
+
+
+
+
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
