@@ -3,6 +3,7 @@
   --btn-border: #007ffd;
   --btn-text: #ffffff;
   --bkg-yellow: rgb(241, 205, 85);
+  --animation-time: 5s;
 }
 
 .resize {
@@ -258,6 +259,24 @@ div.settings label       { text-align:right; }
   margin-right: -1%;
 }
 
+.main-header-2 {
+  background-color:rgb(241, 205, 85);
+  width: 102%;
+  margin: 0;
+  /* box-sizing:border-box; */
+  height: 30%;
+  /* display: flex; */
+  /* align-items: baseline; */
+  /* justify-content: space-between; */
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+  margin-left: -1%;
+  margin-right: -1%;
+}
+
+
 /* .sec-title-outer {
   width: 150px;
   padding: 20px;
@@ -398,7 +417,13 @@ ul.no-bullets {
 }
 
 @media screen and (max-width: 800px) {
-  .navigation.responsive {position: relative;}
+  .navigation.responsive {
+    position: relative;
+    width: 106%;
+    margin-left: -3%;
+    margin-right: -3%;
+    margin-top: -2%;
+  }
   .navigation.responsive a.icon {
     position: absolute;
     right: 0;
@@ -408,6 +433,12 @@ ul.no-bullets {
     float: none;
     display: block;
     text-align: left;
+  }
+  .navigation {
+    width: 106%;
+    margin-left: -3%;
+    margin-right: -3%;
+    margin-top: -2%;
   }
   .outer {
     display:inline;
@@ -469,6 +500,17 @@ ul.no-bullets {
     left: 0;
   }
 
+  .main-header {
+    width: 106%;
+    margin: 0;
+    box-sizing:border-box;
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+    margin-left: -3%;
+    margin-right: -3%;
+  }
+
 }
 
 
@@ -492,4 +534,34 @@ cima da barra de atalhos. */
   100% {opacity: 0;}
 } */
 
+/* #anim-title {
+  animation: title-shadow var(--animation-time) ease alternate 5;
+}
 
+@keyframes title-shadow {
+  /* 0% {text-shadow: -20px px 30px blue;} */
+  /* 25% {text-shadow: 0px -20px 20px blue;} */
+  /* 50% {text-shadow: 20px 0px 30px blue;} */
+  /* 75% {text-shadow: 0px 20px 20px blue;} */
+  /* 100% {text-shadow: -20px px 30px blue;} */
+/* }  */
+
+/* .paused {
+  animation-timing-function:
+} */
+
+#tamanho {
+  animation: tamanho-enlarge var(--animation-time) ease alternate 1;
+}
+
+@keyframes tamanho-enlarge {
+  50% {color:white;}
+}
+
+#informacao {
+  animation: info-blur var(--animation-time) ease alternate 1;
+}
+
+@keyframes info-blur {
+  50% {color:white;}
+}
