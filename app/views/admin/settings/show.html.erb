@@ -1,6 +1,6 @@
 <div class="container">
   <div class="central" style="margin:20px;">
-    <div class="padded bordered shadowed">
+    <div class="padded bordered shadowed white-back">
       <%= render partial: "alert" %>
       <%= form_for(Setting.new, url: admin_settings_path) do |f| %>
         <% if !@errors.nil? %>
