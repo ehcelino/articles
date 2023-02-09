@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      @session = Session.create(user: user, login_at: Time.now)
       if params[:remember_me]
         cookies.permanent[:auth_token] = user.auth_token
       else
@@ -24,6 +26,9 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    @session = Session.find_by(user_id: current_user.id, logout_at: nil)
+    @session.update(logout_at: Time.now)
+    session.delete(:user_id)
     cookies.delete(:auth_token)
     flash[:success] = "Sessão encerrada com sucesso."
     redirect_to root_url

@@ -5,9 +5,33 @@
       <h2>Admin dashboard</h2>
     </div>
   </div>
-  <div class="stats">
-    <p>O sistema contém <%= @articles.count %> artigos.</p>
-    <p>Estes artigos contém <%= @comments.count %> comentários.</p>
-    <p><%= @users.count %> usuários estão registrados.</p>
+  <div style="display:flex; justify-content:space-evenly;">
+    <div class="stats padded bordered shadowed">
+      <h3>Estatísticas do sistema</h3>
+      <p>O sistema contém <strong><%= @articles.count %></strong> artigos.</p>
+      <p>Estes artigos contém <strong><%= @comments.count %></strong> comentários.</p>
+      <p><strong><%= @users.count %></strong> usuários estão registrados.</p>
+      <p>Últimos usuários conectados:</p>
+      <div class="bordered padded">
+        <% @sessions.each do |session| %>
+          <% user = session.user %>
+          <p>
+            Usuário: <%= user.username %><br>
+            Entrada: <%= session.login_at.strftime("%d/%m/%Y %H:%M") %><br>
+            Saída: <%= session.logout_at.try(:strftime, "%d/%m/%Y %H:%M") %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="padded bordered shadowed">
+        <h3>Configurações do sistema</h3>
+        <div>
+          <p>Artigos por página na visualização padrão: <strong><%= Setting.per_page %></strong></p>
+          <p>Limite de comentários: <strong><%= Setting.comments_limit %></strong></p>
+          <p>Quantidade de palavras do artigo</p>
+          <p>na visualização de grupo: <strong><%= Setting.truncate_limit %></strong></p>
+          <p>Máximo nível de comentários: <strong><%= Setting.comment_depth_limit %></strong></p>
+        </div>
+    </div>
   </div>
 </div>

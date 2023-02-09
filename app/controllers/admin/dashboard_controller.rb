@@ -6,6 +6,7 @@ class Admin::DashboardController < ApplicationController
     @articles = Article.all
     @comments = Comment.all
     @users = User.all
+    @sessions = Session.order(login_at: :desc).limit(3)
   end
   
   private
