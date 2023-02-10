@@ -5,7 +5,7 @@ module ApplicationHelper
     comments.map do |comment|
       content_tag(:div, class: "comment", style: "padding-left: #{depth * 10}px;") do
         content_tag(:div, class:"comment-title") do
-        link_to(comment.title, new_comment_path(parent_id: comment.id, article_id: @article.id), class:"lnk") 
+        link_to(comment.title, "#", class: "comment-link lnk", data: { title: comment.title, comment: comment.content }) 
         end +
         content_tag(:i, class: "comment-user") do
           comment.user.username

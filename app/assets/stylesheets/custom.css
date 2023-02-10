@@ -487,6 +487,8 @@ ul.no-bullets {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  border: none;
+  background-color: tra;
 }
 
 .close:hover,

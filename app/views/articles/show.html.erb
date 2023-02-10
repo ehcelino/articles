@@ -1,4 +1,13 @@
 <div class="container">
+
+  <div id="comment-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <button id="close-modal-button" class="close">&times;</button>
+      <strong><p id="modal-comment-title"></p></strong>
+      <p id="modal-comment-content"></p>
+    </div>
+  </div>
+
   <%= render partial: "alert" %>
   <div style="margin-bottom:20px;">
     <div class="article-show">
@@ -31,3 +40,18 @@
     <%= link_to "Voltar", :back, class: "lnk" %>
   </div>
 </div>
+
+
+<script>
+$(document).ready(function() {
+  $('.comment-link').click(function(e) {
+    e.preventDefault();
+    $('#modal-comment-title').text($(this).data('title'));
+    $('#modal-comment-content').text($(this).data('comment'));
+    $('#comment-modal').show();
+  });
+  $('#close-modal-button').click(function() {
+    $('#comment-modal').hide();
+  });
+});
+</script>
