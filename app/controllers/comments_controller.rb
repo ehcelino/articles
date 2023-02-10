@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   # before_action :set_comment, only: [:show, :edit, :update, :destroy]
   # before_action :set_article, only: [:new, :create]
   before_action :check_depth_limit, only: [:new]
-
+  before_action :check_user, only: [:new, :create]
   def new
     @comment = Comment.new
     if params[:article_id]
@@ -72,6 +72,13 @@ class CommentsController < ApplicationController
           flash[:danger] = "Atingida profundidade máxima de comentários (#{Setting.comment_depth_limit})."
           redirect_to article_path(parent_comment.article)
         end
+      end
+    end
+
+    def check_user
+      if current_user.username == "Visitante"
+        flash[:danger] = "Você precisa estar logado para comentar."
+        redirect_to article_path(id: params[:article_id])
       end
     end
 
