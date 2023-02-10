@@ -1,32 +1,29 @@
 <%= render partial: "alert" %>
- <div class="dropdown">
-  <button onclick="myDrop()" class="dropbtn">Dropdown</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-</div> 
+<button id="example-modal-button">Open Modal</button>
+<%=render 'modals/example_modal' %>
 
 <script>
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myDrop() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+// app/assets/javascripts/modals.js
+$(document).ready(function() {
+  var modal = $("#example-modal");
+  var btn = $("#example-modal-button");
+  var span = $(".close");
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+  btn.click(function() {
+    modal.show();
+  });
+
+  span.click(function() {
+    modal.hide();
+  });
+
+  $(window).click(function(event) {
+    if (event.target == modal[0]) {
+      modal.hide();
     }
-  }
-} 
+  });
+});
+
+
 </script>
