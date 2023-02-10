@@ -18,3 +18,9 @@
 * Layout admin - layout separado para gerar as páginas do admin
 
 * Helpers - helper para extrair as imagens anexadas no rich text
+
+
+obs: usar
+before_action :remember_page, only: [:index, :show]
+nos controllers das páginas que você quer que retornem à página anterior, e nas views usar
+<%= link_to_previous_page("voltar") %>

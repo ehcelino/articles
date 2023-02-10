@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   require 'ostruct'
-  before_action :store_history
+  # before_action :store_history
   # after_action :check_for_404
   
   private
@@ -20,11 +20,17 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def store_history
-    session[:history] ||= []
-    session[:history].delete_at(0) if session[:history].size >= 5
-    session[:history] << request.url
+  def remember_page
+    session[:previous_pages] ||= []
+    session[:previous_pages] << url_for(params.to_unsafe_h) if request.get?
+    session[:previous_pages] = session[:previous_pages].uniq.first(2)
   end
+
+  # def store_history
+  #   session[:history] ||= []
+  #   session[:history].delete_at(0) if session[:history].size >= 5
+  #   session[:history] << request.url
+  # end
 
   # def authorize
   #   if current_user.nil?

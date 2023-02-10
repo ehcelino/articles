@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-
+  before_action :remember_page, only: [:index, :show]
+  
   def index
     page = params[:page] || 1
     @per_page = Setting.per_page
