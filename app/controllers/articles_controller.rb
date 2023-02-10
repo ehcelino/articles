@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :remember_page, only: [:index, :show]
-  
+
   def index
     page = params[:page] || 1
     @per_page = Setting.per_page
@@ -9,6 +9,12 @@ class ArticlesController < ApplicationController
     # @articles = Article.all
     # @comments = Comment.all
     @actual = params[:page] || 1
+  end
+
+  def like
+    @article = Article.find(params[:id])
+    Like.create(user_id: current_user.id, article_id: @article.id)
+    redirect_to @article
   end
 
   def new

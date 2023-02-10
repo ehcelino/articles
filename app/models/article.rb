@@ -3,6 +3,11 @@ class Article < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_rich_text :content
+  has_many :likes
+
+  def liked?(user)
+    !!self.likes.find{|like| like.user_id == user.id}
+  end
 
   def date_time_changed?
     created_at.strftime("%Y-%m-%d %H:%M") != updated_at.strftime("%Y-%m-%d %H:%M")

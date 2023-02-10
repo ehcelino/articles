@@ -46,6 +46,9 @@
         <div class="article-user">
           Categoria: <%= article.category.name %>
         </div>
+        <div class="article-user">
+        Likes: <%= count_likes(article) %>
+        </div>
         <div class="outer">
           <div class="article-body">
             <%= truncate_article(article, Setting.truncate_limit) %>

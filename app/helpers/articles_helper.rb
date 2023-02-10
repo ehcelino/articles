@@ -27,5 +27,8 @@ module ArticlesHelper
     )
   end
 
+  def count_likes(article)
+    article.likes.count
+  end
 
 end
