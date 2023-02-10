@@ -35,7 +35,7 @@
     <div>
       <% if current_user.username != "Visitante" %>
         <% if @article.liked?(current_user) %>
-          <%= button_to "Like", like_path(@article), method: "post", disabled: true %>
+          <%= button_to "Unlike", unlike_path(@article), method: "delete" %>
         <% else %>
           <%= button_to "Like", like_path(@article), method: "post" %>
         <% end %>

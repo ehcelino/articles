@@ -17,6 +17,13 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
 
+  def unlike
+    @article = Article.find(params[:id])
+    @likes = Like.where(user_id: current_user.id, article_id: @article.id)
+    @likes[0].destroy
+    redirect_to @article
+  end
+
   def new
     @article = Article.new
   end

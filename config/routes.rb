@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "contact", to: 'home#contact'
   get "cat/:id", to: "categories#index", as: "cat"
   post "/article/:id/like", to: "articles#like", as: "like"
+  delete "/article/:id/unlike", to: "articles#unlike", as: "unlike"
   # get "users", to: "users#index"
   # redireciona os erros 404
   get '*path', to: 'errors#not_found', constraints: ->(request){ !request.path.starts_with?('/assets') && !request.path.starts_with?('/images') && !request.path.starts_with?('/javascripts') && !request.path.starts_with?('/stylesheets') && !request.path.starts_with?('/rails/active_storage') }
