@@ -1,0 +1,20 @@
+<%= render partial: "alert" %>
+<div class="central">
+  <% @users.each do |user| %>
+    <div class="container padded bordered shadowed white-back">
+      <div>
+        <h3><%= user.username %></h3>
+        <br />
+        <%= user.fullname %>
+        <br />
+        <%= user.email %>
+        <br />
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="central">
+  <div>
+      <%= link_to "Voltar", :back %>
+  </div>
+</div>

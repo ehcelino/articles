@@ -9,6 +9,7 @@ class Admin::DashboardController < ApplicationController
     @sessions = Session.order(login_at: :desc).limit(3)
   end
   
+  
   private
 
   def check_admin

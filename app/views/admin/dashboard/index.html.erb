@@ -5,7 +5,7 @@
       <h2>Admin dashboard</h2>
     </div>
   </div>
-  <div style="display:flex; justify-content:space-evenly;">
+  <div class="general-container">
     <div class="stats padded bordered shadowed white-back">
       <h3>Estatísticas do sistema</h3>
       <p>O sistema contém <strong><%= @articles.count %></strong> artigos.</p>
@@ -21,6 +21,7 @@
             Saída: <%= session.logout_at.try(:strftime, "%d/%m/%Y %H:%M") %>
           </p>
         <% end %>
+        <%= link_to "Listar usuários cadastrados", users_path %>
       </div>
     </div>
     <div class="padded bordered shadowed white-back">

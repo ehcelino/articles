@@ -1,5 +1,5 @@
-<% total_pages = (@articles.count / @per_page) %>
-<% total_pages += 1 if @articles.count % @per_page != 0 %>
+<% total_pages = (@articles_count / @per_page) %>
+<% total_pages += 1 if @articles_count % @per_page != 0 %>
 <div class="container">
   <%= render partial: "alert" %>
   <span class="sec-title"><%= link_to "Início", root_path, class: "lnk" %> > <%= Category.find_by(id: params[:id]).name %></span>
@@ -50,9 +50,9 @@
       <div class="pages">
         <% (1..total_pages).each_with_index do |page, idx| %>
           <% if @actual.to_i == (idx + 1) %>
-            <%= link_to page, root_path(page: page), class: "btn pages" %>
+            <%= link_to page, cat_path(page: page), class: "btn pages" %>
           <% else %>
-            <%= link_to page, root_path(page: page), class: "lnk pages" %>
+            <%= link_to page, cat_path(page: page), class: "lnk pages" %>
           <% end %>    
         <% end %>
       </div>
