@@ -25,7 +25,7 @@
 
 
 
- <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
+ <button onclick="topFunction()" id="top-button" title="Go to top">topo</button> 
 <script>
 
 
@@ -53,16 +53,16 @@ $(document).ready(function() {
   // GO TO TOP BUTTON
 $(document).ready(function() {
   // Get the button:
-let mybutton = document.getElementById("myBtn");
+let topButton = document.getElementById("top-button");
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
+    topButton.style.display = "block";
   } else {
-    mybutton.style.display = "none";
+    topButton.style.display = "none";
   }
 }
 
