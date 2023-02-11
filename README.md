@@ -21,9 +21,4 @@
 
 * Like - ícone de like / unlike para cada artigo
 
-
-
-obs: usar
-before_action :remember_page, only: [:index, :show]
-nos controllers das páginas que você quer que retornem à página anterior, e nas views usar
-<%= link_to_previous_page("voltar") %>
+* Gem backpedal - gerencia os links "voltar" das páginas, para que retornem à página inicial sem passar por formulários e etc.

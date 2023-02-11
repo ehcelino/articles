@@ -21,11 +21,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def remember_page
-    session[:previous_pages] ||= []
-    session[:previous_pages] << url_for(params.to_unsafe_h) if request.get?
-    session[:previous_pages] = session[:previous_pages].uniq.first(2)
-  end
 
   # def store_history
   #   session[:history] ||= []

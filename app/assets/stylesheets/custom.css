@@ -152,7 +152,7 @@ div.settings label       { text-align:right; }
 } */
 
 .error_messages {
-  width:150px; 
+  width:177px; 
   z-index: 99; 
   position:absolute; 
   background-color:white;
