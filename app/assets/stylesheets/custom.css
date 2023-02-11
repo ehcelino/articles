@@ -134,6 +134,8 @@ div.settings label       { text-align:right; }
   background-color: #f3a4a4;
 }
 
+
+
 #article-title {
   width: 250px;
 }
@@ -217,6 +219,8 @@ div.settings label       { text-align:right; }
   text-decoration: none;
 }
 
+/* ARTICLE SHOW.HTML.ERB */
+
 .article-title {
   font-family: Garamond, Times, serif;
   font-size:x-large;
@@ -225,6 +229,16 @@ div.settings label       { text-align:right; }
   margin-bottom: 10px;
   text-decoration: none;
   color: black;
+}
+
+.article-author {
+  margin-bottom: 10px;
+  font-size:small;
+}
+
+.like {
+  font-size: x-large;
+  color: var(--btn-face)
 }
 
 .comment-title {
@@ -247,11 +261,6 @@ div.settings label       { text-align:right; }
 
 .comment {
   margin-top: 10px;
-}
-
-.article-author {
-  margin-bottom: 10px;
-  font-size:small;
 }
 
 .main-header {
@@ -370,7 +379,7 @@ ul.no-bullets {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
+  background-color: var(--btn-face); /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 10px 15px;
@@ -381,6 +390,57 @@ ul.no-bullets {
 #top-button:hover {
   background-color: #333; /* Add a dark-grey background on hover */
 }
+
+
+/* TOOLTIP */
+
+ /* Tooltip container */
+ .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size:medium;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+} 
+
 
 /* DROPDOWN */
 

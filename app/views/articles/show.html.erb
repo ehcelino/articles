@@ -32,12 +32,18 @@
         <%= link_to "Editar", edit_article_path(@article) %>
       <% end %>
     </div>
-    <div>
+    <div class="like">
       <% if current_user.username != "Visitante" %>
         <% if @article.liked?(current_user) %>
-          <%= button_to "Unlike", unlike_path(@article), method: "delete" %>
+          <div class="tooltip">
+            <%= link_to '<i class="fa-solid fa-heart like"></i>'.html_safe, unlike_path(@article), data: { turbo_method: "delete" }, id: "unlike-link" %>
+            <span class="tooltiptext">Unlike</span>
+          </div>
         <% else %>
-          <%= button_to "Like", like_path(@article), method: "post" %>
+          <div class="tooltip">
+            <%= link_to '<i class="fa-regular fa-heart like"></i>'.html_safe, like_path(@article), data: { turbo_method: "post" }, id: "like-link"%>
+            <span class="tooltiptext">Like</span>
+          </div>
         <% end %>
       <% end %>
     </div>
