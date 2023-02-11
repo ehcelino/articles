@@ -19,6 +19,9 @@
 
 * Helpers - helper para extrair as imagens anexadas no rich text
 
+* Like - ícone de like / unlike para cada artigo
+
+
 
 obs: usar
 before_action :remember_page, only: [:index, :show]
