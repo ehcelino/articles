@@ -72,3 +72,5 @@ group :test do
 end
 
 gem "rails-settings-cached", "~> 2.8"
+
+gem "backpedal", path: "~/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/backpedal-0.2.1"

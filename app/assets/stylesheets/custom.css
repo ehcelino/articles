@@ -216,6 +216,10 @@ div.settings label       { text-align:right; }
   color: black;
 }
 
+.back_link {
+  color: black;
+}
+
 .article-link {
   text-decoration: none;
 }
