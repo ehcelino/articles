@@ -14,14 +14,24 @@ class ArticlesController < ApplicationController
   def like
     @article = Article.find(params[:id])
     Like.create(user_id: current_user.id, article_id: @article.id)
-    redirect_to @article
+    respond_to do |format|
+      format.html { redirect_to @article }
+      format.turbo_stream do
+        render turbo_stream: [turbo_stream.replace('like', partial: 'like', locals: { article: @article })]
+      end
+    end
   end
 
   def unlike
     @article = Article.find(params[:id])
     @likes = Like.where(user_id: current_user.id, article_id: @article.id)
     @likes[0].destroy
-    redirect_to @article
+    respond_to do |format|
+      format.html { redirect_to @article }
+      format.turbo_stream do
+        render turbo_stream: [turbo_stream.replace('like', partial: 'like', locals: { article: @article })]
+      end
+    end
   end
 
   def new

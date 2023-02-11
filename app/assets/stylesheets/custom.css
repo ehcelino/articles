@@ -403,20 +403,20 @@ ul.no-bullets {
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 60px;
   background-color: #555;
   color: #fff;
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
-  font-size:medium;
+  font-size:small;
 
   /* Position the tooltip text */
   position: absolute;
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -30px;
 
   /* Fade in tooltip */
   opacity: 0;

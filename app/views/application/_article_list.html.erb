@@ -1,0 +1,45 @@
+<div class="articles">
+    <% articles.each do |article| %>
+      <div class="article-view bordered shadowed padded">
+        
+        <%= link_to article_path(article), class:"article-link" do %>
+        <div class="article-title">
+          <%= article.title %>
+        </div>
+        <div class="article-user">
+          <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y %H:%M") %></i>
+        </div>
+        <% if article.date_time_changed? %>
+          <div class="article-user">
+            <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
+          </div>
+        <% end %>
+        <div class="article-user">
+          Categoria: <%= article.category.name %>
+        </div>
+        <div class="article-user">
+        <i class="fa-solid fa-heart"> </i> <%= count_likes(article) %>
+        </div>
+        <div class="outer">
+          <div class="article-body">
+            <%= truncate_article(article, Setting.truncate_limit) %>
+            <strong><%= link_to "Ver artigo completo", article_path(article), class: "lnk" %></strong>
+          </div>
+          <% end %>
+          <div>
+            <%= return_img(article.content) %>
+          </div>
+        </div>
+        <div>
+          <% if current_user.id == article.user.id %>
+            <%= link_to "Editar", edit_article_path(article), class: "lnk" %>
+          <% end %>
+        </div>
+        
+        <div class="comments">
+          <% @comments = article.comments %>
+          <%= render_comments_max(@comments) %>
+        </div>
+      </div>
+    <% end %>
+  </div>

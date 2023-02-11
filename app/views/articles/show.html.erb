@@ -32,21 +32,7 @@
         <%= link_to "Editar", edit_article_path(@article) %>
       <% end %>
     </div>
-    <div class="like">
-      <% if current_user.username != "Visitante" %>
-        <% if @article.liked?(current_user) %>
-          <div class="tooltip">
-            <%= link_to '<i class="fa-solid fa-heart like"></i>'.html_safe, unlike_path(@article), data: { turbo_method: "delete" }, id: "unlike-link" %>
-            <span class="tooltiptext">Unlike</span>
-          </div>
-        <% else %>
-          <div class="tooltip">
-            <%= link_to '<i class="fa-regular fa-heart like"></i>'.html_safe, like_path(@article), data: { turbo_method: "post" }, id: "like-link"%>
-            <span class="tooltiptext">Like</span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+    <%= render partial: "like", locals: { article: @article } %>
     <br />
     <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), class: "lnk" %>
     <br />
