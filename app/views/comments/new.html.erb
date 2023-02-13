@@ -31,7 +31,7 @@
           <%= f.hidden_field :parent_id, value: params[:parent_id] %>
           <%= f.hidden_field :article_id, value: (@article_id || params[:article_id]) %>  
         </div>
-        <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
+        <div class="actions"><%= f.submit "Enviar", class:"btn" %> <%= link_to "Cancelar", article_path(id: params[:article_id]), class: "btn" %></div>
       <% end %>
     <% end %>
   </div>
