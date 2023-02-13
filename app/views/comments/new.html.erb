@@ -4,7 +4,7 @@
   <div class="form padded bordered shadowed about">
     <h3>Comentário</h3>
     <%= turbo_frame_tag "comment_frame" do %>
-      <%= form_for @comment do |f| %>
+      <%= form_for @comment, data: { turbo_frame: "view_comments" } do |f| %>
         <% if @comment.errors.any? %>
           <div class="alert-danger">
             <h3>Atenção:</h3>

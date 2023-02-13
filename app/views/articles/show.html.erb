@@ -38,7 +38,9 @@
     <%= turbo_frame_tag "comment_frame" %>
     <br />
     <br />
-    <%= render_comments(@comments) %>
+    <%= turbo_frame_tag "view_comments" do %>
+      <%= render "view_comments" %>
+    <% end %>
       <%= back_link %>
   </div>
 </div>

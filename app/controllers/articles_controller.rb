@@ -57,6 +57,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @article }
+      format.turbo_stream do
+        render turbo_stream: [turbo_stream.replace('view_comments', partial: 'view_comments', locals: { comments: @comments }),
+        turbo_stream.update('comment_frame', '<div></div>')]
+      end
     end
 
   end
