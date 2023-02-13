@@ -34,7 +34,8 @@
     </div>
     <%= render partial: "like", locals: { article: @article } %>
     <br />
-    <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), class: "lnk" %>
+    <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), data: { turbo_frame: "comment_frame" }, class: "lnk" %>
+    <%= turbo_frame_tag "comment_frame" %>
     <br />
     <br />
     <%= render_comments(@comments) %>

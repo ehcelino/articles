@@ -3,36 +3,37 @@
 <div class="central">
   <div class="form padded bordered shadowed about">
     <h3>Comentário</h3>
-    <%= form_for @comment do |f| %>
-      <% if @comment.errors.any? %>
-        <div id="notice" class="error_messages alert-danger">
-          <h3>Atenção:</h3>
-          <ul class="no-bullets">
-            <% @comment.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+    <%= turbo_frame_tag "comment_frame" do %>
+      <%= form_for @comment do |f| %>
+        <% if @comment.errors.any? %>
+          <div class="alert-danger">
+            <h3>Atenção:</h3>
+            <ul class="no-bullets">
+              <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <div class="label">
+            <%= f.label "Título" %><br />
+          </div>
+          <%= f.text_field :title %>
         </div>
+        <div class="field">
+          <div class="label">
+            <%= f.label "Comentário" %><br />
+          </div>
+          <%= f.text_area :content, class:"comment-area" %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :parent_id, value: params[:parent_id] %>
+          <%= f.hidden_field :article_id, value: (@article_id || params[:article_id]) %>  
+        </div>
+        <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
       <% end %>
-      <div class="field">
-        <div class="label">
-          <%= f.label "Título" %><br />
-        </div>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <div class="label">
-          <%= f.label "Comentário" %><br />
-        </div>
-        <%= f.text_area :content, class:"comment-area" %>
-      </div>
-      <div class="field">
-        <%= f.hidden_field :parent_id, value: params[:parent_id] %>
-        <%= f.hidden_field :article_id, value: (@article_id || params[:article_id]) %>  
-      </div>
-      <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
     <% end %>
-
   </div>
 </div>
 </div>
