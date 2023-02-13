@@ -7,21 +7,17 @@ class Comment < ApplicationRecord
   belongs_to :parent, class_name: 'Comment', optional: true
   scope :roots, -> { where(parent_id: nil) }
 
-  # def depth_limit
-  #   if self.depth >= Setting.comment_depth_limit
-  #     errors.add(:base, "Comment depth limit exceeded")
-  #     flash[:danger] = "Limite de comentários atingido."
-  #     redirect_to :back
-  #   end
-  # end
+  validates :title, presence: {message: "não pode estar em branco."}, blacklist: true
+  validates :content, presence: {message: "não pode estar em branco."}
+  
+  HUMANIZED_ATTRIBUTES = {
+  :title => "Título",
+  :content => "Conteúdo", 
+  }
 
-  # def set_depth
-  #   if parent.present?
-  #     self.depth = parent.depth + 1
-  #   else
-  #     self.depth = 0
-  #   end
-  # end
+  def self.human_attribute_name(attr, options={})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
 
 end
 

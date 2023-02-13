@@ -1,13 +1,13 @@
 <div class="container">
+<%= render partial: "alert" %>
 <div class="central">
-  <%= render partial: "alert" %>
   <div class="form padded bordered shadowed about">
     <h3>Comentário</h3>
     <%= form_for @comment do |f| %>
       <% if @comment.errors.any? %>
         <div id="notice" class="error_messages alert-danger">
           <h3>Atenção:</h3>
-          <ul>
+          <ul class="no-bullets">
             <% @comment.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
@@ -28,7 +28,7 @@
       </div>
       <div class="field">
         <%= f.hidden_field :parent_id, value: params[:parent_id] %>
-        <%= f.hidden_field :article_id, value: params[:article_id] %>  
+        <%= f.hidden_field :article_id, value: (@article_id || params[:article_id]) %>  
       </div>
       <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
     <% end %>

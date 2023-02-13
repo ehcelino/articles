@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     if params[:article_id]
       @article = Article.find(params[:article_id])
+      session[:article_id] = @article.id
     end
     if params[:comment_id]
       @parent_comment = Comment.find(params[:comment_id])
@@ -16,13 +17,14 @@ class CommentsController < ApplicationController
   def create
     Rails.logger.error("Entrou no create")
     @comment = Comment.new(comment_params)
+    @article_id = session[:article_id]
     set_depth
     # @comment.article = @article
     @comment.user = current_user
     if @comment.save
       redirect_to article_path(params[:comment][:article_id]), notice: 'Comment was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity, content_type: "text/html"
     end
   end
 
