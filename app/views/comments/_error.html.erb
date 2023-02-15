@@ -1,0 +1,8 @@
+<div class="alert-danger">
+  <h3>Atenção:</h3>
+  <ul class="no-bullets">
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>

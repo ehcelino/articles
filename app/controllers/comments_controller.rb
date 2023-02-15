@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   # before_action :set_article, only: [:new, :create]
   before_action :check_depth_limit, only: [:new]
   before_action :check_user, only: [:new, :create]
+  
   def new
     @comment = Comment.new
     if params[:article_id]
@@ -11,18 +12,7 @@ class CommentsController < ApplicationController
     end
     if params[:parent_id]
       @parent_comment = Comment.find(params[:parent_id])
-    end
-  end
-
-
-  def com
-    @comment = Comment.new
-    if params[:article_id]
-      @article = Article.find(params[:article_id])
-      session[:article_id] = @article.id
-    end
-    if params[:comment_id]
-      @parent_comment = Comment.find(params[:comment_id])
+      session[:parent_id] = @parent_comment.id
     end
   end
 
@@ -30,13 +20,19 @@ class CommentsController < ApplicationController
     Rails.logger.error("Entrou no create")
     @comment = Comment.new(comment_params)
     @article_id = session[:article_id]
+    @parent_id = session[:parent_id]
     set_depth
     # @comment.article = @article
     @comment.user = current_user
-    if @comment.save
-      redirect_to article_path(params[:comment][:article_id]), notice: 'Comment was successfully created.'
-    else
-      render :new, status: :unprocessable_entity, content_type: "text/html"
+    respond_to do |format|
+      if @comment.save
+        redirect_to article_path(params[:comment][:article_id]), notice: 'Comment was successfully created.'
+      else
+        # render :new, status: :unprocessable_entity, content_type: "text/html"
+        # flash[:danger] = "Erro no preenchimento."
+        # render turbo_stream: [turbo_stream.replace("#{@parent_comment}", 'comments#new')]
+        format.turbo_stream { render :error_stream }
+      end
     end
   end
 
