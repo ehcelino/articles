@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
   scope :roots, -> { where(parent_id: nil) }
 
   validates :title, presence: {message: "não pode estar em branco."}, blacklist: true
-  validates :content, presence: {message: "não pode estar em branco."}
+  validates :content, presence: {message: "não pode estar em branco."}, blacklist: true
   
   HUMANIZED_ATTRIBUTES = {
   :title => "Título",
