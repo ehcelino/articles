@@ -9,6 +9,18 @@ class CommentsController < ApplicationController
       @article = Article.find(params[:article_id])
       session[:article_id] = @article.id
     end
+    if params[:parent_id]
+      @parent_comment = Comment.find(params[:parent_id])
+    end
+  end
+
+
+  def com
+    @comment = Comment.new
+    if params[:article_id]
+      @article = Article.find(params[:article_id])
+      session[:article_id] = @article.id
+    end
     if params[:comment_id]
       @parent_comment = Comment.find(params[:comment_id])
     end

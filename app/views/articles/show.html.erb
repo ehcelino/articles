@@ -29,19 +29,23 @@
     <br />
     <div>
       <% if current_user.id == @article.user.id %>
-        <%= link_to "Editar", edit_article_path(@article) %>
+        <%= link_to "Editar", edit_article_path(@article), class: "lnk" %>
+        <br />
+        <br />
       <% end %>
     </div>
     <%= render partial: "like", locals: { article: @article } %>
     <br />
-    <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), data: { turbo_frame: "comment_frame" }, class: "lnk" %>
+    <%= link_to "Novo comentário", com_path(article_id: @article.id), data: { turbo_frame: "comment_frame" }, class: "lnk" %>
     <%= turbo_frame_tag "comment_frame" %>
     <br />
     <br />
     <%= turbo_frame_tag "view_comments" do %>
       <%= render "view_comments" %>
     <% end %>
-      <%= back_link %>
+    <%= turbo_frame_tag "frame-comment" %>
+    
+    <%= back_link %>
   </div>
 </div>
 

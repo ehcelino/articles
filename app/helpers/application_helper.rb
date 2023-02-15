@@ -5,7 +5,7 @@ module ApplicationHelper
     comments.map do |comment|
       content_tag(:div, class: "comment", style: "padding-left: #{depth * 10}px;") do
         content_tag(:div, class:"comment-title") do
-        link_to(comment.title, "#", class: "comment-link lnk", data: { title: comment.title, comment: comment.content }) 
+          link_to(comment.title, "#", class: "comment-link lnk", data: { title: comment.title, comment: comment.content }) 
         end +
         content_tag(:i, class: "comment-user") do
           comment.user.username
@@ -17,7 +17,10 @@ module ApplicationHelper
           comment.content
         end +
         content_tag(:div) do
-          link_to("Comentar", new_comment_path(parent_id: comment.id, article_id: @article.id), class:"lnk")
+          link_to("Comentar", new_comment_path(parent_id: comment.id, article_id: @article.id), data: { turbo_frame: dom_id(comment) }, class:"lnk")
+        end +
+        content_tag(:div) do
+          turbo_frame_tag dom_id comment
         end +
         content_tag(:br) +
         content_tag(:div, class: "children") do
@@ -56,7 +59,17 @@ module ApplicationHelper
     return comments_html
   end
 
-
+  def form_error_notification(object)
+    if object.errors.any?
+      tag.div class: "error_messages alert-danger", id:"notice" do
+        tag.ul class: "no-bullets" do  
+          object.errors.full_messages.each do |message|
+            concat content_tag(:li, message)
+          end
+        end
+      end
+    end
+  end
   
 
 end

@@ -1,9 +1,4 @@
-<div class="container">
-<%= render partial: "alert" %>
-<div class="central">
-  <div class="form padded bordered shadowed about">
-    <h3>Comentário</h3>
-    <%= turbo_frame_tag dom_id(@parent_comment) do %>
+<%= turbo_frame_tag "comment_frame" do %>
       <%= form_for @comment, data: { turbo_frame: "view_comments" } do |f| %>
         <% if @comment.errors.any? %>
           <div class="alert-danger">
@@ -31,9 +26,6 @@
           <%= f.hidden_field :parent_id, value: params[:parent_id] %>
           <%= f.hidden_field :article_id, value: (@article_id || params[:article_id]) %>  
         </div>
-        <div class="actions"><%= f.submit "Enviar", class:"btn" %> <%= link_to "Cancelar", article_path(id: (@article_id || params[:article_id])), class: "btn" %> </div>
+        <div class="actions"><%= f.submit "Enviar", class:"btn" %> <%= link_to "Cancelar", article_path(id: (@article_id || params[:article_id])), class: "btn" %></div>
       <% end %>
     <% end %>
-  </div>
-</div>
-</div>

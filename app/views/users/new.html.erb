@@ -4,16 +4,7 @@
   <div class="form bordered padded shadowed">
     <h3>Inscrição</h3>
     <%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
-        <div id="notice" class="error_messages alert-danger">
-          <h3>Atenção:</h3>
-          <ul class="no-bullets">
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= form_error_notification(@user) %>
 
       <div class="field">
         <div class="label">
