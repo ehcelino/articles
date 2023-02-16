@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:danger] = "Usuário ou senha inválidos."
-      redirect_to login_path
+      render :new, status: :unprocessable_entity, content_type: "text/html"
     end
   end
   

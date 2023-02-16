@@ -1,18 +1,24 @@
 class CommentsController < ApplicationController
   # before_action :set_comment, only: [:show, :edit, :update, :destroy]
   # before_action :set_article, only: [:new, :create]
-  before_action :check_depth_limit, only: [:new]
+  before_action :check_depth_limit, only: [:new, :create]
   before_action :check_user, only: [:new, :create]
   
+
   def new
     @comment = Comment.new
     if params[:article_id]
       @article = Article.find(params[:article_id])
       session[:article_id] = @article.id
     end
-    if params[:parent_id]
+    if !params[:parent_id].nil?
       @parent_comment = Comment.find(params[:parent_id])
       session[:parent_id] = @parent_comment.id
+      @parent_id = @parent_comment.id
+    elsif !params[:comment].nil?
+      session[:parent_id] = params[:comment][:parent_id]
+      @parent_comment = Comment.find(params[:comment][:parent_id])
+      @parent_id = @parent_comment.id
     end
   end
 
@@ -20,21 +26,45 @@ class CommentsController < ApplicationController
     Rails.logger.error("Entrou no create")
     @comment = Comment.new(comment_params)
     @article_id = session[:article_id]
-    @parent_id = session[:parent_id]
+    if !session[:parent_id].nil?
+      @parent_id = session[:parent_id]
+      @parent_comment = Comment.find(session[:parent_id])
+    elsif !params[:comment].nil?
+      if params[:comment][:parent_id] != ""
+        session[:parent_id] = params[:comment][:parent_id]
+        @parent_id = session[:parent_id]
+        @parent_comment = Comment.find(params[:comment][:parent_id])
+      end
+    end
     set_depth
     # @comment.article = @article
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        redirect_to article_path(params[:comment][:article_id]), notice: 'Comment was successfully created.'
+        format.html { redirect_to article_path(params[:comment][:article_id]), notice: 'Comment was successfully created.' }
       else
-        # render :new, status: :unprocessable_entity, content_type: "text/html"
+        format.html { render :new, status: :unprocessable_entity, content_type: "text/html" }
         # flash[:danger] = "Erro no preenchimento."
         # render turbo_stream: [turbo_stream.replace("#{@parent_comment}", 'comments#new')]
-        format.turbo_stream { render :error_stream }
+        
+        # format.turbo_stream { render :error_stream }
+
+        # format.turbo_stream { turbo_stream.replace('error_stream', partial: 'error', locals: { comments: @comments }) }
       end
     end
   end
+
+  # def com
+  #   @comment = Comment.new
+  #   if params[:article_id]
+  #     @article = Article.find(params[:article_id])
+  #     session[:article_id] = @article.id
+  #   end
+  #   if params[:parent_id]
+  #     @parent_comment = Comment.find(params[:parent_id])
+  #     session[:parent_id] = @parent_comment.id
+  #   end
+  # end
 
   def update
     set_depth
@@ -78,9 +108,10 @@ class CommentsController < ApplicationController
       if params[:parent_id].present?
         Rails.logger.error("This is an error message")
         parent_comment = Comment.find(params[:parent_id])
-        if parent_comment.depth >= 4
+        if parent_comment.depth >= Setting.comment_depth_limit
+          render turbo_stream: [turbo_stream.update("#{helpers.dom_id(parent_comment)}", "<div>Atenção: atingida profundidade máxima de comentários (#{Setting.comment_depth_limit}).</div>")]
           flash[:danger] = "Atingida profundidade máxima de comentários (#{Setting.comment_depth_limit})."
-          redirect_to article_path(parent_comment.article)
+          # redirect_to article_path(parent_comment.article)
         end
       end
     end
@@ -95,4 +126,7 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:title, :content, :parent_id, :article_id)
     end
+
+    
+
 end

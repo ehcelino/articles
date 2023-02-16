@@ -22,7 +22,7 @@ module Admin
         Setting.send("#{key}=", setting_params[key].strip) unless setting_params[key].nil?
       end
       flash[:success] = "Configurações atualizadas com sucesso."
-      redirect_to admin_settings_path
+      redirect_to admin_dashboard_index_path
     end
 
     private
