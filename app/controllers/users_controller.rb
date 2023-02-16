@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       cookies[:auth_token] = @user.auth_token
+      @session = Session.create(user: @user, login_at: Time.now)
       flash[:success] = "Logado com sucesso."
       redirect_to root_url
     else

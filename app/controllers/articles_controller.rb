@@ -45,7 +45,10 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
-      redirect_to @article
+      respond_to do |format|
+        format.html { redirect_to @article }
+        format.turbo_stream { redirect_to @article }
+      end
     else
       render :edit
     end
@@ -55,12 +58,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comments = @article.comments.roots
     respond_to do |format|
-      format.html
+      format.html 
       format.json { render json: @article }
-      format.turbo_stream do
-        render turbo_stream: [turbo_stream.replace('view_comments', partial: 'view_comments', locals: { comments: @comments }),
-        turbo_stream.update('comment_frame', '<div></div>')]
-      end
+      # format.turbo_stream {do
+      #   render turbo_stream: [turbo_stream.replace('view_comments', partial: 'view_comments', locals: { comments: @comments }),
+      #   turbo_stream.update('comment_frame', '<div></div>')]
+      # end}
     end
 
   end
@@ -69,7 +72,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     if @article.save
       flash[:success] = "Artigo criado com sucesso."
-      redirect_to article_path(@article)
+      redirect_to @article
     else
       render :new, status: :unprocessable_entity, content_type: "text/html"
     end

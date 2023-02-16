@@ -2,7 +2,12 @@
 class BlacklistValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     # record.errors.add(attribute, :on_blacklist) if blacklist.include? value
-    record.errors.add(attribute, "contém uma palavra inválida.") if blacklist.include? value.downcase
+    separated_value = value.split
+    separated_value.each do |val|
+      if blacklist.include? val.downcase
+        record.errors.add(attribute, "contém uma palavra inválida.")
+      end
+    end
   end
 
   private

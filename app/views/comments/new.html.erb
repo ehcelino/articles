@@ -4,7 +4,7 @@
       <% tag_id = "comment_frame" %>
     <% end %>
     <%= turbo_frame_tag tag_id do %>
-      <%= form_for @comment, data: { turbo_frame: "comment_frame" } do |f| %>
+      <%= form_for @comment, data: { turbo_frame: "view_comments" } do |f| %>
         <% if @comment.errors.any? %>
           <div class="alert-danger">
             <h3>Atenção:</h3>
@@ -32,7 +32,7 @@
           <%= f.hidden_field :parent_id, value: (@parent_id || params[:parent_id]) %>
           <%= f.hidden_field :article_id, value: (@article_id || params[:article_id]) %>  
         </div>
-        <div class="actions"><%= f.submit "Enviar", class:"btn", data: { turbo_frame: "comment_frame" } %> <%= link_to "Cancelar", article_path(id: (@article_id || params[:article_id])), class: "btn" %> </div>
+        <div class="actions"><%= f.submit "Enviar", class:"btn", data: { turbo_frame: "view_comments" } %> <%= link_to "Cancelar", article_path(id: (@article_id || params[:article_id])), class: "btn" %> </div>
         <%# @parent_comment.nil? %>
       <% end %>
     <% end %>
