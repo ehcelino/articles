@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  
+  before_action :dissolve, only: [:index]
 
   def index
     page = params[:page] || 1
@@ -76,6 +76,12 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity, content_type: "text/html"
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to admin_dashboard_manage_articles_path
   end
 
   private

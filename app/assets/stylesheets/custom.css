@@ -192,11 +192,17 @@ div.settings label       { text-align:right; }
 
 .article-view {
   margin: 50px 0 50px 0;
+  background-color: white;
 }
 
 .article-user {
   font-size:x-small;
   color: black;
+}
+
+.heart {
+  font-size: larger;
+  color: var(--btn-face)
 }
 
 .article-body {

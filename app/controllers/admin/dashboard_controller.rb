@@ -9,6 +9,9 @@ class Admin::DashboardController < ApplicationController
     @sessions = Session.order(login_at: :desc).limit(3)
   end
   
+  def manage_articles
+    @articles = Article.all.order(created_at: :desc)
+  end
   
   private
 

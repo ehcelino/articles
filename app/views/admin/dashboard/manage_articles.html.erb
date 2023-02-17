@@ -1,30 +1,28 @@
 <div class="articles">
-    <% articles.each do |article| %>
+    <% @articles.each do |article| %>
       <div class="article-view bordered shadowed padded">
         
         <%= link_to article_path(article), class:"article-link" do %>
-        <div style="display:flex; justify-content:space-between;">
-          <div class="article-title">
-            <%= article.title %>
-          </div>
-          <div class="heart">
-            <i class="fa-solid fa-heart"> </i> <%= count_likes(article) %>
-          </div>
+        <div class="article-title">
+          <%= article.title %>
         </div>
+        <div class="article-user">
+          <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y %H:%M") %></i>
+        </div>
+        <% if article.date_time_changed? %>
           <div class="article-user">
-            <i class="fa-solid fa-user"></i> <i><%= article.user.fullname %> - <%= article.created_at.strftime("%d/%m/%Y %H:%M") %></i>
+            <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
           </div>
-          <% if article.date_time_changed? %>
-            <div class="article-user">
-              <i>Editado em: <%= article.updated_at.strftime("%d/%m/%Y %H:%M") %></i>
-            </div>
-          <% end %>
-          <div class="article-user">
-            Categoria: <%= article.category.name %>
-          </div>
+        <% end %>
+        <div class="article-user">
+          Categoria: <%= article.category.name %>
+        </div>
+        <div class="article-user">
+        <i class="fa-solid fa-heart"> </i> <%= count_likes(article) %>
+        </div>
         <div class="outer">
           <div class="article-body">
-            <%= truncate_article(article, Setting.truncate_limit) %>
+            <%= truncate_article(article, 200) %>
             <strong><%= link_to "Ver artigo completo", article_path(article), class: "lnk" %></strong>
           </div>
           <% end %>
@@ -42,6 +40,7 @@
           <% @comments = article.comments %>
           <%= render_comments_max(@comments) %>
         </div>
+        <%= button_to "Excluir", article_path(article), method: :delete, class: "btn" %>
       </div>
     <% end %>
   </div>

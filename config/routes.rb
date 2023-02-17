@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :comments
   namespace :admin do
     get 'dashboard/index'
+    get 'dashboard/manage_articles'
     resource :settings
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   get "about", to: 'home#about'
   get "contact", to: 'home#contact'
   get "cat/:id", to: "categories#index", as: "cat"
+
   # get "com", to: "comments#com", as: "com"
   post "/article/:id/like", to: "articles#like", as: "like"
   delete "/article/:id/unlike", to: "articles#unlike", as: "unlike"

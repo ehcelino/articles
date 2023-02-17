@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_rich_text :content
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   def liked?(user)
     !!self.likes.find{|like| like.user_id == user.id}

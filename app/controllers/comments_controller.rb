@@ -41,7 +41,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to article_path(params[:comment][:article_id]), notice: 'Comment was successfully created.' }
+        format.html { flash[:success] = "Comentário criado!"
+          redirect_to article_path(params[:comment][:article_id]) }
       else
         format.html { render :new, status: :unprocessable_entity, content_type: "text/html" }
         # flash[:danger] = "Erro no preenchimento."
@@ -69,7 +70,7 @@ class CommentsController < ApplicationController
   def update
     set_depth
     if @comment.update(comment_params)
-      redirect_to @comment.article, notice: 'Comment was successfully updated.'
+      redirect_to @comment.article, notice: 'Comentário modificado com sucesso.'
     else
       render :edit
     end
@@ -77,7 +78,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to @comment.article, notice: 'Comment was successfully destroyed.'
+    redirect_to @comment.article, notice: 'Comentário apagado com sucesso.'
   end
 
   private
