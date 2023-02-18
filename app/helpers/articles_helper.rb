@@ -2,7 +2,7 @@ module ArticlesHelper
 
   def truncate_article(article, word_count = 100)
     truncated = truncate(strip_tags(article.content.to_s), length: word_count, separator: ' ')
-    content_tag(:p, truncated, class:"article-body")
+    content_tag(:p, simple_format(truncated, class: "article-body"), class:"article-body")
   end
 
   def rich_text(rich_text_object)

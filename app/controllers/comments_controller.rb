@@ -15,10 +15,12 @@ class CommentsController < ApplicationController
       @parent_comment = Comment.find(params[:parent_id])
       session[:parent_id] = @parent_comment.id
       @parent_id = @parent_comment.id
-    elsif !params[:comment].nil?
+    elsif !params[:comment].nil? && params[:comment][:parent_id] != ""
       session[:parent_id] = params[:comment][:parent_id]
       @parent_comment = Comment.find(params[:comment][:parent_id])
       @parent_id = @parent_comment.id
+    else
+      session[:parent_id] = nil
     end
   end
 
@@ -26,6 +28,10 @@ class CommentsController < ApplicationController
     Rails.logger.error("Entrou no create")
     @comment = Comment.new(comment_params)
     @article_id = session[:article_id]
+    # Para listar os comentários
+    @article = Article.find(@article_id)
+    @comments = @article.comments.roots
+    # ################
     if !session[:parent_id].nil?
       @parent_id = session[:parent_id]
       @parent_comment = Comment.find(session[:parent_id])
@@ -43,12 +49,19 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { flash[:success] = "Comentário criado!"
           redirect_to article_path(params[:comment][:article_id]) }
+        
+          format.turbo_stream do
+            render turbo_stream: [turbo_stream.update('comment_frame', '<div></div>'),
+            turbo_stream.update("view_comments", partial: "articles/view_comments", locals: { comments: @comments })]
+          end
+        
       else
-        format.html { render :new, status: :unprocessable_entity, content_type: "text/html" }
+        format.html { flash[:danger] = "Erro na criação do comentário."
+          render :new, status: :unprocessable_entity, content_type: "text/html" }
         # flash[:danger] = "Erro no preenchimento."
         # render turbo_stream: [turbo_stream.replace("#{@parent_comment}", 'comments#new')]
         
-        # format.turbo_stream { render :error_stream }
+        
 
         # format.turbo_stream { turbo_stream.replace('error_stream', partial: 'error', locals: { comments: @comments }) }
       end
@@ -111,7 +124,7 @@ class CommentsController < ApplicationController
         parent_comment = Comment.find(params[:parent_id])
         if parent_comment.depth >= Setting.comment_depth_limit
           render turbo_stream: [turbo_stream.update("#{helpers.dom_id(parent_comment)}", "<div>Atenção: atingida profundidade máxima de comentários (#{Setting.comment_depth_limit}).</div>")]
-          flash[:danger] = "Atingida profundidade máxima de comentários (#{Setting.comment_depth_limit})."
+          # flash[:danger] = "Atingida profundidade máxima de comentários (#{Setting.comment_depth_limit})."
           # redirect_to article_path(parent_comment.article)
         end
       end
@@ -119,8 +132,9 @@ class CommentsController < ApplicationController
 
     def check_user
       if current_user.username == "Visitante"
-        flash[:danger] = "Você precisa estar logado para comentar."
-        redirect_to article_path(id: params[:article_id])
+        # flash[:danger] = "Você precisa estar logado para comentar."
+        # redirect_to article_url(id: params[:article_id])
+        render turbo_stream: [turbo_stream.update('log_message', '<div>Você precisa estar logado para comentar.</div>')]
       end
     end
 

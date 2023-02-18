@@ -26,7 +26,7 @@
         
 
 
-        <div class="nav-items" id="adm_stuff">
+        <div class="nav-items" id="adm_stuff" style="z-index:99;">
 
           <% if current_user.admin? %>
             <a href="#" onclick="adminDrop();return false;" class="droplnk" id="adm_link"><i class="fa-solid fa-list ico-blue"></i> Administração</a>  
@@ -67,8 +67,10 @@ $(document).ready(function() {
   document.getElementById("myDropdown").style.left = `-${width}px`;
 
   const link3 = document.getElementById("adm_link");
-  const width3 = link3.style.left;
-  document.getElementById("adminDropdown").style.left = `${width3}px`;
+  if (link3) {
+    const width3 = link3.style.left;
+    document.getElementById("adminDropdown").style.left = `${width3}px`;
+  }
 });
 
 /* When the user clicks on the button,
@@ -78,7 +80,7 @@ function adminDrop() {
   const width4 = getOffset(link4).left;
   console.log(width4)
   document.getElementById("adminDropdown").classList.toggle("show");
-  if (window.innerWidth < 800) {
+  if (window.innerWidth < 900) {
     document.getElementById("adminDropdown").style.left = `0px`;
   } else {
     document.getElementById("adminDropdown").style.left = `${width4}px`;
@@ -89,7 +91,7 @@ function myDrop() {
   const link2 = document.getElementById("drop_link");
   const width2 = link2.offsetWidth;
   document.getElementById("myDropdown").classList.toggle("show");
-  if (window.innerWidth < 800) {
+  if (window.innerWidth < 900) {
     document.getElementById("myDropdown").style.left = `0px`;
   } else {
     document.getElementById("myDropdown").style.left = `-${width2}px`;

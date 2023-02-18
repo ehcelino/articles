@@ -17,10 +17,12 @@ module ApplicationHelper
           comment.content
         end +
         content_tag(:div) do
-          link_to("Comentar", new_comment_path(parent_id: comment.id, article_id: @article.id), data: { turbo_frame: dom_id(comment) }, class:"lnk")
+          if current_user.username != "Visitante"
+            link_to("Comentar", new_comment_path(parent_id: comment.id, article_id: @article.id), data: { turbo_frame: dom_id(comment) }, class:"lnk")
+          end
         end +
         content_tag(:div) do
-          turbo_frame_tag dom_id comment
+          turbo_frame_tag dom_id(comment), autoscroll: "true"
         end +
         content_tag(:br) +
         content_tag(:div, class: "children") do

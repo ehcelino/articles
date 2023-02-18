@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
         redirect_to admin_dashboard_index_path
       else
         flash[:success] = "Sessão iniciada com sucesso."
-        redirect_to root_url
+        # redirect_to root_url
+        stepback(2)
       end
     else
       flash[:danger] = "Usuário ou senha inválidos."

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :dissolve, only: [:index]
+  before_action :dissolve, only: [:index] # backpedal gem
 
   def index
     page = params[:page] || 1

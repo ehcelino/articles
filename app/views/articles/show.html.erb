@@ -36,10 +36,13 @@
     </div>
     <%= render partial: "like", locals: { article: @article } %>
     <br />
-    <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), data: { turbo_frame: "comment_frame" }, class: "lnk" %>
-    <%= turbo_frame_tag "comment_frame" %>
+    <% if current_user.username != "Visitante" %>
+      <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), data: { turbo_frame: "comment_frame" }, class: "lnk" %>
+    <% end %>
+    <%= turbo_frame_tag "comment_frame", autoscroll: "true" %>
     <br />
     <br />
+    <div id="log_message" class="log-message"></div>
     <%= turbo_frame_tag "view_comments" do %>
       <%= render "view_comments" %>
     <% end %>

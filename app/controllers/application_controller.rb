@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   require 'ostruct'
-  before_action :capture_path, if: :current_user
+  before_action :capture_path, if: :current_user # backpedal gem
   # before_action :store_history
   # after_action :check_for_404
   
