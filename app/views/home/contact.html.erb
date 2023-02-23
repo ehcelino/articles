@@ -1,7 +1,22 @@
 <%= render partial: "alert" %>
-<button id="example-modal-button">Open Modal</button>
-<%=render 'modals/example_modal' %>
-
+<div class="wrapper" style="display:flex;flex-direction:column;min-height:90vh;">
+  <div style="flex:1;">  
+    <button id="example-modal-button">Open Modal</button>
+    <%=render 'modals/example_modal' %>
+  </div>
+  <div>
+  <div class="main-footer">
+      <div>
+        <h1 class="main-title-footer"><i class="fa-solid fa-pen-nib ico-blue"></i> Artigos</h1>
+      </div>
+      <div class="main-middle">
+      </div>
+      <div class="sec-title-outer">
+        <p class="sec-title"></p>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 
 // app/assets/javascripts/modals.js

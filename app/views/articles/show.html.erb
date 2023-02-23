@@ -39,7 +39,7 @@
     <% if current_user.username != "Visitante" %>
       <%= link_to "Novo comentário", new_comment_path(article_id: @article.id), data: { turbo_frame: "comment_frame" }, class: "lnk" %>
     <% end %>
-    <%= turbo_frame_tag "comment_frame", autoscroll: "true" %>
+    <%= turbo_frame_tag "comment_frame", autoscroll: true, data: { autoscroll_behavior: "smooth" } %>
     <br />
     <br />
     <div id="log_message" class="log-message"></div>
