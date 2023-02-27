@@ -22,11 +22,13 @@
           <div class="label">
             <%= f.label " " %><br />
           </div>
-          <%= f.rich_text_area :content %>
+          <%= f.rich_text_area :content, id:"textField" %>
         </div>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="actions"><%= f.submit "Enviar", class:"btn" %></div>
       <% end %>
+      <button id="showEmoji" class="btn">Emojis</button>
     </div>
   </div>
 </div>
+<%= render partial: "script" %>

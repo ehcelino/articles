@@ -14,7 +14,7 @@ img {
   width: 200px;
   margin: 50px;
   border-radius: 5px;
-  height: 240px;
+  height: 210px;
   display: flex;
 }
 
@@ -115,9 +115,9 @@ img.emoji {
 
 .emoji_box {
   display:none;
-  position:absolute;
+  position:fixed;
   z-index: 1;
-  /* bottom: 50px; */
+  bottom: 50px;
   left: 100px;
 }
 
