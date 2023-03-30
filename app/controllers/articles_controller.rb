@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :dissolve, only: [:index] # backpedal gem
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :like, :unlike]
 
   def index
     page = params[:page] || 1
@@ -12,7 +13,6 @@ class ArticlesController < ApplicationController
   end
 
   def like
-    @article = Article.find(params[:id])
     Like.create(user_id: current_user.id, article_id: @article.id)
     respond_to do |format|
       format.html { redirect_to @article }
@@ -23,7 +23,6 @@ class ArticlesController < ApplicationController
   end
 
   def unlike
-    @article = Article.find(params[:id])
     @likes = Like.where(user_id: current_user.id, article_id: @article.id)
     @likes[0].destroy
     respond_to do |format|
@@ -39,11 +38,9 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       respond_to do |format|
         format.html { redirect_to @article }
@@ -55,7 +52,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
     @comments = @article.comments.roots
     respond_to do |format|
       format.html 
@@ -79,12 +75,15 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to admin_dashboard_manage_articles_path
   end
 
   private
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
   def article_params
     params.require(:article).permit(:title, :user_id, :category_id, :content)
