@@ -21,6 +21,7 @@ body {
   overflow-y: scroll;
   /* acima eu escondo a scrollbar horizontal mantendo
   a vertical intacta */
+  margin: 0;
 }
 
 /* PAGINA DE CONFIGURAÇÕES */
@@ -271,7 +272,7 @@ div.settings label       { text-align:right; }
 
 .main-header {
   background-color:rgb(241, 205, 85);
-  width: 102%;
+  /* width: 102%; */
   margin: 0;
   box-sizing:border-box;
   height: 50%;
@@ -282,13 +283,13 @@ div.settings label       { text-align:right; }
   position: relative;
   overflow: hidden;
   z-index: -1;
-  margin-left: -1%;
-  margin-right: -1%;
+  /* margin-left: -1%; */
+  /* margin-right: -1%; */
 }
 
 .main-header-2 {
   background-color:rgb(241, 205, 85);
-  width: 104%;
+  /* width: 104%; */
   margin: 0;
   box-sizing:border-box;
   height: 30%;
@@ -299,8 +300,8 @@ div.settings label       { text-align:right; }
   position: relative;
   overflow: hidden;
   z-index: -1;
-  margin-left: -2%;
-  margin-right: -2%;
+  /* margin-left: -2%; */
+  /* margin-right: -2%; */
 }
 
 
@@ -567,9 +568,9 @@ ul.no-bullets {
   height: 45px; */
   background-color: #333;
   /* width: 102%; */
-  margin-left: -10px;
-  margin-top: -9px;
-  margin-right: -10px;
+  /* margin-left: -10px; */
+  /* margin-top: -9px; */
+  /* margin-right: -10px; */
   height: 45px;
   z-index:99;
 }
@@ -656,15 +657,15 @@ ul.no-bullets {
     /* float:right; */
     position: absolute;
     right: 0;
-    top: -2px;
+    /* top: -2px; */
     z-index: 99;
   }
   .navigation.responsive a {
     float: none;
     display: block;
     text-align: left;
-    margin-right:-3px;
-    margin-left:-3px;
+    /* margin-right:-3px; */
+    /* margin-left:-3px; */
     z-index:99;
   }
   /* .navigation {
@@ -736,14 +737,14 @@ ul.no-bullets {
   }
 
   .main-header {
-    width: 106%;
+    /* width: 106%; */
     margin: 0;
     box-sizing:border-box;
     position: relative;
     overflow: hidden;
     z-index: -1;
-    margin-left: -3%;
-    margin-right: -3%;
+    /* margin-left: -3%; */
+    /* margin-right: -3%; */
   }
 
 }
